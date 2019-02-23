@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>修改信息</title>
+    <link rel="stylesheet" href="/static/css/reset.css"/>
+    <link rel="stylesheet" href="/static/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="/static/css/style.css"/>
+</head>
+<body>
+    <!--scroll-head-->
+    <div class="scroll-head"></div>
+    <!--top-->
+    <div class="top-wrapper">
+        <div class="top-info">
+            <div class="top-left">
+                <div data-toggle="arrowdown" id="arrow1" class="user-name">
+                    <a href="#">个人中心</a>
+                    <span class="down-icon"></span>
+                </div>
+                <div data-toggle="arrowdown" id="arrow2" class="msg-info">
+                    <i class="fa fa-envelope fa-gray"></i>
+                    <a href="#">消息</a>
+                    <span class="down-icon"></span>
+                </div>
+                <a class="a-float-left" href="#">手机淘宝</a>
+                <img height="34px" a-float-left src="/static/img/qqq.gif" />
+                <!--hidden-box-->
+                <div data-toggle="hidden-box" id="nav-box1" class="user-box">
+                    <img class="my-head" src="/static/img/user-head.jpg" />
+                    <div class="my-grow">
+                        <h1><a href="#">账号管理</a>&nbsp;|&nbsp;<a href="{% url 'goods:index' %}">退出</a></h1>
+                        <p>
+                            <h2><a href="{% url 'users:news' %}">个人信息</a></h2>
+                            <a href="#">我的成长</a>
+                        </p>
+                    </div>
+                    <p style="height: 10px; clear: both;">&nbsp;</p>
+                    <div class="my-card">
+                        <div class="cards-info">
+                            <ul>
+                                <li><img src="/static/img/icon.png" /></li>
+                                <li><img src="/static/img/icon.png" /></li>
+                            </ul>
+                        </div>
+                        <div class="toggle-box">
+                            <div class="toggle">
+                                 <i style="vertical-align: top" class="fa fa-angle-left arrow-left"></i>
+                                 <i style="vertical-align: top" class="fa fa-angle-right arrow-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--top-right-->
+            <div class="top-right">
+                <div data-toggle="arrowdown" id="arrow3" class="user-name">
+                    <a href="#">我的淘宝</a>
+                    <span class="down-icon"></span>
+                </div>
+                <div data-toggle="arrowdown" id="arrow4" class="user-name">
+                    <i class="fa fa-shopping-cart fa-orange"></i>
+                    <a href="#">购物车</a>
+                    <span class="down-icon"></span>
+                </div>
+                <div data-toggle="arrowdown" id="arrow5" class="user-name">
+                    <i class="fa fa-star fa-gray"></i>
+                    <a href="#">收藏夹</a>
+                    <span class="down-icon"></span>
+                </div>
+                <a class="a-float-left" href="#">商品分类</a>
+                <span class="vertical-line">|</span>
+                <div data-toggle="arrowdown" id="arrow6" class="user-name">
+                    <a href="#">卖家中心</a>
+                    <span class="down-icon"></span>
+                </div>
+                <a class="a-float-left" href="#">联系客户</a>
+                <div data-toggle="arrowdown" id="arrow7" class="user-name">
+                    <i class="fa fa-list-ul fa-orange"></i>
+                    <a href="#">网站导航</a>
+                    <span class="down-icon"></span>
+                </div>
+                <!--hidden-box-->
+                <div data-toggle="hidden-box" id="nav-box3" class="my-taobao-box">
+                    <ul>
+                        <li>已买到的宝贝</li>
+                        <li>新欢</li>
+                        <li>我的足迹</li>
+                        <li>我的上新</li>
+                        <li>我的优惠</li>
+                    </ul>
+                </div>
+                <div data-toggle="hidden-box" id="nav-box4" class="shopping-box">
+                    <span>您购物车里还没有任何宝贝。</span><a class="check-shopp" href="#">查看我的购物车</a>
+                </div>
+                <div data-toggle="hidden-box" id="nav-box5" class="get-box">
+                    <ul>
+                        <li>收藏的宝贝</li>
+                        <li>收藏的店铺</li>
+                    </ul>
+                </div>
+                <div data-toggle="hidden-box" id="nav-box6" class="center-box">
+                    <ul>
+                        <li>已卖出的宝贝</li>
+                        <li>出售中的宝贝</li>
+                        <li>卖家服务市场</li>
+                        <li>卖家培训中心</li>
+                    </ul>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+    <div class="top-main" style="font-size: 30px;">
+			<div style="margin: 0 auto; width: 27%; line-height: 120px;">
+				 <h1>修改信息</h1>
+			</div>
+
+    </div>
+    <!--content-top-->
+    <div class="content-top">
+        <div class="right-con">
+            <div class="show-box" style="font-size: 24px;">
+               <div style="width: 150px; float: left;">
+                <h3 style="margin: 1px;">用户名：</h3>
+                <h3 style="margin: 1px;">昵称：</h3>
+                <h3 style="margin: 1px;">年龄：</h3>
+                <h3 style="margin: 1px;">性别：</h3>
+                <h3 style="margin: 1px;">联系电话：</h3>
+                <h3 style="margin: 1px;">邮箱：</h3>
+                <h3 style="margin: 1px;">注册时间：</h3>
+                <h3 style="margin: 1px;">上次登录：</h3>
+                {% if user.status == '1' %}
+                    <h3>我的店铺：</h3>
+                    <h3>店铺简介：</h3>
+                {% else %}
+                   你还没有开店！
+                {% endif %}
+                <h3 style="margin: 1px;">修改头像：</h3>
+               </div>
+                <div style="width: 350px; float: left;">
+                    <form action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <p>{{user.username}}</p>
+                        <input type="text" name="nickname" value="{{user.nickname}}" />
+                        <input type="text" name="age" value="{{user.age}}" />
+                        <input type="text" name="gender" value="{{user.gender}}" />
+                        <input type="text" name="phone" value="{{user.phone}}" />
+                        <input type="text" name="email" value="{{user.email}}" />
+                        <p>{{user.regist_time}}</p>
+                        <p>{{user.last_login_time}}</p>
+                        {% if user.status == '1' %}
+                            <input type="text" name="name" value="{{store.name}}" />
+                            <input type="text" name="intro" value="{{store.intro}}" />
+                        {% else %}
+                        <a href="">快去开店吧！</a>
+                        {% endif %}
+                        <input type="file" name="header"/>
+                        <input type="submit" value="提交"/>
+                    </form>
+               </div>
+                <div style="width: 200px; float: left;">
+                    <h3>头像：</h3>
+                    <img src="/{{user.header}}" alt="找不到了" style="width: 200px; height: 200px;">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <div class="footer-right">
+            <div class="footer-nav">
+                <a href="#">阿里巴巴集团</a>|
+                <a href="#">阿里巴巴国际站</a>|
+                <a href="#">阿里巴巴中国站</a>|
+                <a href="#">全球速卖通</a>|
+                <a href="#">淘宝网</a>|
+                <a href="#">天猫</a>|
+                <a href="#">聚划算</a>|
+                <a href="#">一淘</a>|
+                <a href="#">阿里妈妈</a>|
+                <a href="#">阿里云计算</a>|
+                <a href="#">云OS</a>|
+                <a href="#">万网</a>|
+                <a href="#">支付宝</a>|
+                <a href="#">来往</a>
+            </div>
+            <div class="about-tao">
+                <a href="#">关于淘宝</a>
+                <a href="#">合作伙伴</a>
+                <a href="#">营销中心</a>
+                <a href="#">廉正举报</a>
+                <a href="#">联系客服</a>
+                <a href="#">开放平台</a>
+                <a href="#">诚征英才</a>
+                <a href="#">联系我们</a>
+                <a href="#">网站地图</a>
+                <a href="#">法律声明</a>
+                <span class="gary-text">&copy; 2014 Taobao.com 版权所有</span>
+            </div>
+            <p class="gary-text"><span>网络文化经营许可证：文网文[2010]040号</span>|<span>增值电信业务经营许可证：浙B2-20080224-1</span>|<span>信息网络传播视听节目许可证：1109364号</span></p>
+            <div class="some-info">
+                <img src="/static/img/some.png" />
+            </div>
+        </div>
+        <div class="tao-man">
+            <img src="/static/img/tao-man.png" />
+        </div>
+    </div>
+
+    <!--backtoTop1-->
+    <!--兼容所有现代浏览器同时包括 ie6/7/8/9 （ie6会有一点点抖动）-->
+    <div class="backtoTop" id="backToTop1">
+        <div id="backToTop-up" class="up-back"><i class="fa fa-angle-up"></i></div>
+        <div id="backToTop-down" class="down-back"><i class="fa fa-angle-down"></i></div>
+    </div>
+
+
+    <script src="/static/js/jquery_1.9.js"></script>
+    <script src="/static/js/main.js"></script>
+    <script src="/static/js/img-show.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>商品页面</title>
+    <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content="Products Sale Widget Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design"/>
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		function hideURLbar(){ window.scrollTo(0,1); }
+
+
+
+
+    </script>
+    <!-- //for-mobile-apps -->
+    <link href="/static/css/css/styles.css" rel="stylesheet" type="text/css" media="all"/>
+    <link rel="stylesheet" href="/static/css/css/flexslider.css" type="text/css" media="screen" property=""/>
+    <!-- js -->
+    <script src="/static/js/js/jquery-2.2.3.min.js"></script>
+    <!-- //js -->
+    <!-- font-awesome-icons -->
+    <link rel="stylesheet" type="text/css" href="/static/css/css/sty.css"/>
+    <link href="/static/css/css/font-awesome.css" rel="stylesheet">
+    <!-- //font-awesome-icons -->
+    <link href="//fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese"
+          rel="stylesheet">
+</head>
+<body>
+<div class="main">
+    <h1>{{num.name}}</h1>
+    <div class="w3_agile_main_grids">
+        <div class="w3layouts_main_grid_left">
+            <section class="slider">
+                <div class="flexslider">
+                    <ul class="slides">
+                        <li>
+                            <div class="w3ls_main_grid_left_grid">
+                                <img src="/static/img/images\1.jpg" alt=" "/>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="w3ls_main_grid_left_grid">
+                                <img src="/static/img/images\2.jpg" alt=" "/>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="w3ls_main_grid_left_grid">
+                                <img src="/static/img/images\3.jpg" alt=" "/>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+        <div class="w3_main_grid_right">
+            <form action="{% url 'goods:cart' %}" method="post">
+                <div class="w3l_main_grid_right_grid">
+                    <div class="wthree_main_grid_right_grid1">
+                        <div class="agileits_nav">
+                            <ul>
+                                <li class="active"><a href="/goods/shop/?sid={{num.id}}">店铺详情</a></li>
+                                <li><a href="#">库存:{{g1.stock}}</a></li>
+                                <li><a href="#">销量:{{g1.count}}</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="clear"></div>
+                    </div>
+                    <div class="w3_agileits_main_grid_right_info">
+                        <h2>{{g1.desc}}</h2>
+                        <h3>最潮的服装这里没有</h3>
+                        <p>但是请你放心，我们店里有最丑的服装并且不保证质量，我们的口号：“是用心做投诉最多的店！！！！”</p>
+                    </div>
+                    <div class="agile_occasion_quantity">
+                        <div class="agile_occasion_quantity_left">
+                            <h4>口味</h4>
+                            <div class="agileits_w3layouts_radio_button">
+                                <div class="w3_agile_radio">
+                                    <label class="radio"><input type="radio" name="radio" checked=""><i></i>休闲装</label>
+                                </div>
+                                <div class="w3_agile_radio">
+                                    <label class="radio"><input type="radio" name="radio"><i></i>正装</label>
+                                </div>
+                                <div class="w3_agile_radio">
+                                    <label class="radio"><input type="radio" name="radio"><i></i>运动装</label>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                        <div class="agile_occasion_quantity_right">
+                            <h4>数量</h4>
+                             {% csrf_token %}
+                            <div class="w3layouts_quality">
+                                <div class="w3_quality_select">
+                                    <ul class="btn-numbox" style="margin-left: 85px;">
+                                        <li><span class="number">----</span></li>
+                                        <li>
+                                            <ul class="count">
+                                                <li><span id="num-jian" class="num-jian">-</span></li>
+                                                <li><input type="text" class="input-num" id="input-num"  name="count"   value="0"/></li>
+                                                <li><input type="hidden" id="12"  name="id"   value="{{g1.id}}"/></li>
+                                                <li><span id="num-jia" class="num-jia">+</span></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="agile_price_social">
+                        <div class="agile_price">
+                            <h3>价格：{{g1.price}}元</h3>
+                        </div>
+                        <div class="w3_agile_social">
+                            <ul>
+                                <li><a href="#" class="fa fa-facebook icon facebook"> </a></li>
+                                <li><a href="#" class="fa fa-twitter icon twitter"> </a></li>
+                                <li><a href="#" class="fa fa-google-plus icon googleplus"> </a></li>
+                                <li><a href="#" class="fa fa-dribbble icon dribbble"> </a></li>
+                                <li><a href="#" class="fa fa-rss icon rss"> </a></li>
+                            </ul>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="w3_agileits_add_to_cart">
+                        <div class="w3_cart">
+                            <a href="#">立即购买<i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
+                        </div>
+                        <div class="w3l_wishlist" style="width: 195.91px; height: 40px;">
+                            <a href="" style="width: 195.91px; height: 16px;"><input type="submit" name="" id="2" value="放入购物车"/></a>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="agileits_copyright">
+    </div>
+</div>
+<!-- quality -->
+<script>
+			var num_jia = document.getElementById("num-jia");
+		var num_jian = document.getElementById("num-jian");
+		var input_num = document.getElementById("input-num");
+
+		num_jia.onclick = function() {
+
+			input_num.value = parseInt(input_num.value) + 1;
+		}
+
+		num_jian.onclick = function() {
+
+			if(input_num.value <= 0) {
+				input_num.value = 0;
+			} else {
+
+				input_num.value = parseInt(input_num.value) - 1;
+			}
+
+		}
+
+
+
+
+</script>
+<!-- //quality -->
+<!-- flexSlider -->
+<script defer src="/static/js/js/jquery.flexslider.js"></script>
+<script type="text/javascript">
+		$(window).load(function(){
+		  $('.flexslider').flexslider({
+			animation: "slide",
+			start: function(slider){
+			  $('body').removeClass('loading');
+			}
+		  });
+		});
+
+
+
+
+
+</script>
+<!-- //flexSlider -->
+</body>
+</html>

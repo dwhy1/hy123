@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>注册页面</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">
+    <!-- Google web font "Open Sans" -->
+    <link rel="stylesheet" href="/static/user/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/user/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="/static/user/css/demo.css"/>
+    <link rel="stylesheet" href="/static/user/css/templatemo-style.css">
+
+    <script type="text/javascript" src="/static/user/js/user/modernizr.custom.86080.js"></script>
+
+</head>
+
+<body>
+
+<div id="particles-js"></div>
+
+<ul class="cb-slideshow">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+
+<div class="container-fluid">
+    <div class="row cb-slideshow-text-container ">
+        <div class="tm-content col-xl-6 col-sm-8 col-xs-8 ml-auto section">
+            <header class="mb-5"><h1>Register</h1></header>
+            {{name}}
+            <form action="{% url 'goods:register'  %}" method="post" class="subscribe-form"
+                  enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row form-section">
+                    <div class="col-md-7 col-sm-7 col-xs-7">
+                        <label>用户名：</label><br>
+                        <input name="username" autocomplete="off" type="text" class="form-control" id="username"
+                               placeholder="Your Name..." required/>
+                    </div>
+                    <div class="col-md-7 col-sm-7 col-xs-7">
+                        <label>头像：</label><br>
+                        <input style="width: 400px;" type="file" id="header" name="header">
+                    </div>
+                    <div class="col-md-7 col-sm-7 col-xs-7">
+                        <label>年龄：</label><br>
+                        <input name="age" type="text" autocomplete="off" class="form-control" id="age"
+                               placeholder="Your age..." required/>
+                    </div>
+                    <div class="col-md-7 col-sm-7 col-xs-7">
+                        <label>性别 ：</label><br>
+                        <select name="gender" style="width: 400px;">
+                            <option value="男">男</option>
+                            <option value="女">女</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-7 col-sm-7 col-xs-7">
+                        <label>昵称 ：</label><br>
+                        <input name="nickname" type="text" autocomplete="off" class="form-control" id="nickname"
+                               placeholder="Your nickname..." required/>
+                    </div>
+
+                    <div class="col-md-7 col-sm-7 col-xs-7">
+                        <label>电话 ：</label><br>
+                        <input name="phone" type="text" autocomplete="off" class="form-control" id="phone"
+                               placeholder="Your phone..." required/>
+                    </div>
+
+                    <div class="col-md-7 col-sm-7 col-xs-7">
+                        <label>电子邮箱：</label><br>
+                        <input name="email" type="text" autocomplete="off" class="form-control" id="email"
+                               placeholder="Your email..." required/>
+                    </div>
+
+                    <div class="col-md-7 col-sm-7 col-xs-7">
+                        <label>密码 ：</label><br>
+                        <input name="userpass" type="password" autocomplete="off" class="form-control" id="userpass"
+                               placeholder="Your password..." required/>
+                    </div>
+
+                    <div class="col-md-7 col-sm-7 col-xs-7">
+
+                        <p><label>验证码：</label><br>
+
+                    </div>
+
+                    <div class="col-md-7 col-sm-7 col-xs-7">
+                        <input name="yanz" type="text" class="form-control" autocomplete="off" id="code"/>
+                        <img src="{% url 'goods:creataCode' %}" alt="" onclick="remun(this)">
+                    </div>
+                    <div class="col-md-5 col-sm-5 col-xs-5">
+                        <button type="submit" class="tm-btn-subscribe">注册</button>
+                    </div>
+
+                </div>
+            </form>
+            <script>
+						function remun(node){
+
+                    node.src = '/goods/creataCode/?search=' + Math.random();
+
+                   			}
+
+
+
+            </script>
+            <div class="tm-social-icons-container text-xs-center">
+                <a href="#" class="tm-social-link"><i class="fa fa-facebook"></i></a>
+                <a href="#" class="tm-social-link"><i class="fa fa-google-plus"></i></a>
+                <a href="#" class="tm-social-link"><i class="fa fa-twitter"></i></a>
+                <a href="#" class="tm-social-link"><i class="fa fa-linkedin"></i></a>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+
+<script type="text/javascript" src="/static/user/js/user/particles.js"></script>
+<script type="text/javascript" src="/static/user/js/user/app.js"></script>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312"/>
+    <title>淘宝购物车页面</title>
+    <link href="/static/css/myCart.css" type="text/css" rel="stylesheet"/>
+    <script type="text/javascript" src="/static/js/myCart.js"></script>
+</head>
+
+<body>
+<div id="header"><img src="/static/img/img/6.jpg" alt="logo"/></div>
+<div id="nav">您的位置：<a href="{% url 'goods:index' %}">首页</a> > <a href="#">我的淘宝</a> > 我的购物车</div>
+<div id="navlist">
+    <ul>
+        <li class="navlist_red_left"></li>
+        <li class="navlist_red">1. 查看购物车</li>
+        <li class="navlist_red_arrow"></li>
+        <li class="navlist_gray">2. 确认订单信息</li>
+        <li class="navlist_gray_arrow"></li>
+        <li class="navlist_gray">3. 付款到支付宝</li>
+        <li class="navlist_gray_arrow"></li>
+        <li class="navlist_gray">4. 确认收货</li>
+        <li class="navlist_gray_arrow"></li>
+        <li class="navlist_gray">5. 评价</li>
+        <li class="navlist_gray_right"></li>
+    </ul>
+</div>
+
+<div id="content">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" id="shopping">
+        <form action="{% url 'goods:order_confirm' %}" method="post" name="myform">
+            <tr>
+                <td class="title_1"><input id="allCheckBox" type="checkbox" value="" onclick="selectAll()"/>全选</td>
+                <td class="title_2" colspan="2">店铺宝贝</td>
+                <td class="title_3">获积分</td>
+                <td class="title_4">单价（元）</td>
+                <td class="title_5">数量</td>
+                <td class="title_6">小计（元）</td>
+                <td class="title_7">操作</td>
+            </tr>
+            <tr>
+                <td colspan="8" class="line"></td>
+            </tr>
+            {% for shop_cart in shoplist %}
+             {% csrf_token %}
+            <tr>
+                <td colspan="8" class="shopInfo">店铺：<a href="#">{{shop_cart.goods.goods_store.name}}</a>       卖家：<a href="#">{{shop_cart.goods.goods_store.users.username}}</a>
+                    <img src="/static/img/img/7.jpg" alt="relation"/></td>
+            </tr>
+            <tr id="product2">
+                <td class="cart_td_1"><input name="cartCheckBox" type="checkbox" value="{{shop_cart.id}}"
+                                             onclick="selectSingle()"/></td>
+                <td class="cart_td_2"><img src="/{{shop_cart.goods.img}}" alt="shopping"
+                                           style="width: 58px; height:40px ;"/></td>
+                <td class="cart_td_3"><a href="#">商品名：{{shop_cart.goods.name}}</a><br/>
+                    保障：<img src="/static/img/img/8.jpg" alt="icon"/> <img src="/static/img/img/9.jpg" alt="icon"/></td>
+                <td class="cart_td_4">12</td>
+                <td class="cart_td_5">{{shop_cart.goods.price}}</td>
+                <td class="cart_td_6"><img src="/static/img/img/taobao_minus.jpg" alt="minus" onclick="changeNum('num_2','minus')" class="hand"/> <input id="num_2" type="text" value="{{shop_cart.count}}" class="num_input" readonly="readonly"/>
+                    <img src="/static/img/img/taobao_adding.jpg" alt="增加" onclick="changeNum('num_2','add')" class="hand"/></td>
+                <td class="cart_td_7"></td>
+                <td class="cart_td_8"><a href="/goods/del_shopcart/?sid={{shop_cart.id}}">删除</a></td>
+            </tr>
+
+            {% empty %}
+            <div class="shop_cart_item">购物车为空,<a style="color:red " href="{% url 'goods:index' %}">去购物！</a>
+            </div>
+            {% endfor %}
+            <tr>
+                <td colspan="3"><a href="javascript:deleteSelectRow()">删除</a></td>
+                <td colspan="5" class="shopend">商品总价（不含运费）：<label id="total" class="yellow"></label> 元<br/>
+                    可获积分 <label class="yellow" id="integral"></label> 点<br/>
+                    <button type="submit">提交</button>
+                </td>
+            </tr>
+
+        </form>
+    </table>
+
+</div>
+</body>
+</html>
