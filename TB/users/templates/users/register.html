@@ -1,0 +1,262 @@
+{% extends 'index.html' %}
+	{% block title%}用户注册{% endblock %}
+	{% block link %}
+	<link rel="stylesheet" href="/static/css/style.css">
+	<link rel="stylesheet" href="/static/css/index.css">
+	<link rel="stylesheet" href="/static/css/login.css">
+	<script type="text/javascript" src="/static/js/jquery-1.12.4.min.js"></script>
+	<script type="text/javascript" src="/static/js/index.js"></script>
+	<!--<script type="text/javascript" src="../js/jquery.validate.js"></script>-->
+	<!--<script type="text/javascript" src="../js/messages_zh.js"></script>-->
+	<script type="text/javascript" src="/static/js/cookie.js"></script>
+	<script type="text/javascript" src="/static/js/register.js"></script>
+	{% endblock %}
+	{% block content%}
+	<!--login页banner-->
+	<div id="login-banner">
+		<a href="">
+			<img src="/static/img/login/banner1.jpg" alt="" />
+		</a>
+	</div>
+	<!--login页主体-->
+	<div id="login-container" style="width:1100px">
+		<div class="login-left" style="background:none">
+			<div class="register-login">已是韩都衣舍用户：
+				<a href="{% url 'users:logins' %}"><input type="button" value="直接登录" class="register-login-btn"/></a>
+			</div>
+			<img src="/static/img/login/367-250.png" title="" style="margin-left:93px;width:367px;height:250px;"/>
+			<div class="subscription-prompt">
+
+			</div>
+		</div>
+		<div class="register-right">
+			<div class="register-nav" style="margin-bottom:-30px ">
+				<div class="register-num">1</div>
+				<div class="register-numName">选择注册方式</div>
+				<div class="register-fs">
+					<a href="javascript:;" class="telbtn">普通注册</a>
+					<a href="javascript:;" class="mailbtn">邮箱注册</a>
+				</div>
+			</div>
+            <li style="text-align: center ; color: red ;" id="msg">{{msg}}</li>
+			<div class="register-msg">
+				<div class="register-num">2</div>
+				<div class="register-numName">填写您的信息</div>
+				<div class="reg-msg-container">
+					<!--手机注册表单-->
+					<form action="{% url 'users:register' %}" name="formMobile" id="formMobile" style="display:block" method="post">
+                        {% csrf_token %}
+						<ul class="register-list">
+							<li>
+								<div class="register-list-name">用户名：</div>
+								<input id='name' type="text" value="" class="register-list-txt register_userName" name="name" />
+							</li>
+							<li style="margin-top: 20px">
+								<div class="register-list-name">密码：</div>
+								<input type="password" name="pwd" value="" class="register-list-txt ipt_password"/>
+							</li>
+							<li>
+								<div class="register-list-con register_tipsBox1">
+									6-16位字符，可使用字母、数字或符号的组合
+								</div>
+							</li>
+							<li>
+								<div class="register-list-name">确认密码：</div>
+								<input type="password" name="confirm" value="" class="register-list-txt ipt_repassword"/>
+							</li>
+							<li>
+								<div class="register-list-con register_tipsBox2">
+									请再次输入密码，两次输入必须一致
+								</div>
+							</li>
+                            <li style="margin-top: 0px">
+								<div class="register-list-name">验证码：</div>
+								<input type="text" name="code" value="" class="register-list-txt " autocomplete="off"/>
+                                <img src="/users/get_code/" alt="" onclick="get_code(this)">
+							</li>
+							<li>
+								<div class="register-list-protocol">
+									<input type="checkbox" value="1" checked="checked" name="agreement"/>
+									我已看过并接受
+									<a href="http://www.handu.com/helper-21-734.html" target="_blank" style="color:#bf0000">《用户协议》</a>
+								</div>
+							</li>
+							<li>
+								<input type="submit" id="btn" value="同意协议并注册" class="register-list-agree" id='register_submit'/>
+							</li>
+						</ul>
+					</form>
+					<!--邮箱注册表单-->
+					<form action="{% url 'users:reg_email' %}" name="formMail" style="display:none" method="post">
+                        {% csrf_token %}
+						<ul class="register-list">
+							<li>
+								<div class="register-list-name">Email：</div>
+								<input type="text" name='email' id="email" value="" class="register-list-txt register_userName1"/>
+							</li>
+							<li>
+								<div class="register-list-con">
+								Email地址作为用户名，同时也用于接收账户信息、订单通知及密码找回等功能
+								</div>
+							</li>
+
+							<li>
+								<div class="register-list-name">密码：</div>
+								<input type="password" name='pwd' value="" class="register-list-txt ipt_password"/>
+							</li>
+							<li>
+								<div class="register-list-con register_tipsBox1">
+									6-16位字符，可使用字母、数字或符号的组合
+								</div>
+							</li>
+							<li>
+								<div class="register-list-name">确认密码：</div>
+								<input type="password" name='confirm' value="" class="register-list-txt ipt_repassword"/>
+							</li>
+							<li>
+								<div class="register-list-con register_tipsBox2">
+								请再次输入密码，两次输入必须一致
+								</div>
+							</li>
+							 <li style="margin-top: 0px">
+								<div class="register-list-name">验证码：</div>
+								<input type="text" name="code" value="" class="register-list-txt " autocomplete="off"/>
+                                <img src="/users/get_code/" onclick="get_code1(this)" id="code">
+							</li>
+							<li>
+								<div class="register-list-protocol">
+									<input type="checkbox" id="'btn2" value="1" checked="checked" name="agreement"/>
+									我已看过并接受
+									<a href="http://www.handu.com/helper-21-734.html" target="_blank" style="color:#bf0000">《用户协议》</a>
+								</div>
+							</li>
+							<li>
+								<input type="submit" value="同意协议并注册" class="register-list-agree" id="register_submit1"/>
+							</li>
+						</ul>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div style="clear:both;"></div>
+	</div>
+	<!--表单验证-->
+	<script type="text/javascript">
+        $(function(){
+        	//注册选项卡
+        	$(".register-fs a").on("click",function(){
+        		$(this).removeClass().addClass("telbtn").siblings().removeClass().addClass("mailbtn");
+        		$(".reg-msg-container form").eq($(this).index()).css({display:"block"}).siblings().css({display:"none"});
+        	})
+//      	jQuery.validator.addMethod("isMobile", function(value, element) {
+//			    var length = value.length;
+//			    var mobile = /^(13[0-9]{9})|(18[0-9]{9})|(14[0-9]{9})|(17[0-9]{9})|(15[0-9]{9})$/;
+//			    return this.optional(element) || (length == 11 && mobile.test(value));
+//			}, "请正确填写您的手机号码");
+//          var validate = $("#formMobile").validate({
+//              debug: true, //调试模式取消submit的默认提交功能
+//              //errorClass: "label.error", //默认为错误的样式类为：error
+//              focusInvalid: false, //当为false时，验证无效时，没有焦点响应
+//              onkeyup: false,
+//              submitHandler: function(form){   //表单提交句柄,为一回调函数，带一个参数：form
+//                  alert("提交表单");
+//                  form.submit();   //提交表单
+//              },
+//
+//              rules:{
+//                  mobile:{
+//                      required:true,
+//                      minlength:11,
+//                      isMobile:true
+//                  },
+//                  password:{
+//                      required: true,
+//       				minlength: 5
+//                  }
+//              },
+//              messages:{
+//                  mobile:{
+//                      required:"请输入手机号"
+//
+//                  },
+//                  password:{
+//                      required: "不能为空",
+//                      minlength: "密码长度不能小于 5 个字母"
+//                  }
+//              },
+//            errorPlacement : function(error, element) {
+//			        error.appendTo(element);
+//			    },
+//			    ignore : ".codeCls"
+//          });
+//
+
+        });
+	</script>
+
+<script>
+    function get_code(codes) {
+        codes.src = '/users/get_code/?id=' + Math.random();
+    }
+
+    function get_code1() {
+        img = document.getElementById('code');
+        img.src = '/users/get_code/?id=' + Math.random();
+    }
+
+//ajax检测用户名
+    $(function () {
+
+        $('#name').on('blur', function () {
+            name1 = $(this).val();
+            if (name1.trim() == '') {
+                $('#msg').text('用户名不能为空');
+                return;
+            }
+            $.ajax({
+                url: '/users/checkname/',
+                data: {'name': name1},
+                dataType: 'JSON',
+                type: 'GET',
+                success: function (data) {
+                    if (data.success) {
+                        $('#msg').text(data.msg);
+                        $('#btn').show()
+                    }
+                    else {
+                        $('#msg').text(data.msg);
+                        $('#btn').hide()
+                    }
+                }
+            })
+        })
+    })
+</script>
+<script>
+    $(function () {
+        $('#email').on('blur', function () {
+            email = $(this).val();
+            if (email <= 7) {
+                $('#msg').text('邮箱格式错误')
+                return;
+            }
+            $.ajax({
+                url: '/users/checkemail/',
+                dataType: 'JSON',
+                data: {'email': email},
+                type: 'GET',
+                success: function (data) {
+                    if (data.success) {
+                        $('#msg').text(data.msg);
+                        $('#btn2').show();
+                    }
+                    else {
+                        $('#msg').text(data.msg);
+                        $('#btn2').hide()
+                    }
+                }
+            })
+        })
+    })
+</script>
+{% endblock %}

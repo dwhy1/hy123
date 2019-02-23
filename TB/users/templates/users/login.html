@@ -1,0 +1,120 @@
+{% extends 'index.html' %}
+{% block title%}用户登录{% endblock %}
+{% block link %}
+<link rel="stylesheet" href="/static/css/style.css">
+<link rel="stylesheet" href="/static/css/index.css">
+<link rel="stylesheet" href="/static/css/login.css">
+<script type="text/javascript" src="/static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="/static/js/index.js"></script>
+<script type="text/javascript" src="/static/js/jquery.validate.js"></script>
+<script type="text/javascript" src="/static/js/messages_zh.js"></script>
+<script type="text/javascript" src="/static/js/cookie.js"></script>
+
+{% endblock %}
+{% block content %}
+
+<!--login页banner-->
+<div id="login-banner">
+    <a href="">
+        <img src="/static/img/login/banner1.jpg" alt=""/>
+    </a>
+</div>
+<!--login页主体-->
+<div id="login-container">
+    <div class="login-left"></div>
+    <div class="login-right">
+        <div class="login-form" style="height: 350px;">
+            <h1>用户登录</h1>
+            <form action="{% url 'users:logins' %}" name="formLogin" id="login-form" method="post">
+                {% csrf_token %}
+                <h5>{{msg}}</h5>
+                <ul class="login-form-list">
+                    <li>
+                        <div class="login-form-name">用户名：</div>
+                        <input name="name" id="username" class="login-form-con iptcon" type="text"
+                               placeholder="邮箱地址/用户名"/>
+                        <input name="next" class="login-form-con iptcon" type="hidden" value="{{next_url}}"
+                               placeholder=""/>
+                    </li>
+                    <li>
+                        <div class="login-form-name">密码：</div>
+                        <input name="pwd" class="login-form-con iptpass" type="password" value="" required/>
+                    </li>
+                    {% if request.session.num > 2 %}
+                    <li>
+                        <div class="login-form-name">验证码：</div>
+                        <input type="text" name="code" class="login-form-con iptcon" value="" autocomplete="off"/>
+                        <img style="margin-left: 80px;" src="/users/get_code/" alt="" onclick="get_code(this)">
+                    </li>
+                    {% endif %}
+                    <li style="margin-left:75px; margin-top: 35px;">
+                        <span id="message" class="error login-error"></span>
+                        <span>
+								<input class="login-btn iptbtn" type="submit" value="立即登录"/>
+							</span>
+                    </li>
+                    <li style="margin-left:80px;height:30px;line-height:30px;float: left;">
+                        <a style="text-decoration: underline;" href="/users/register/">注册</a>
+                        <span>|</span>
+                        <a style="text-decoration: underline;" href="">忘记密码?</a>
+                    </li>
+                </ul>
+            </form>
+        </div>
+
+    </div>
+    <div style="clear:both;"></div>
+
+    <!--表单验证-->
+    <script type="text/javascript">
+        $(function(){
+            var validate = $("#login-form").validate({
+
+                //errorClass: "label.error", //默认为错误的样式类为：error
+                focusInvalid: false, //当为false时，验证无效时，没有焦点响应
+                onkeyup: false,
+             /*   submitHandler: function(form){   //表单提交句柄,为一回调函数，带一个参数：form
+                    alert("提交表单");
+                    form.submit();   //提交表单
+                },   */
+
+                rules:{
+                    username:{
+                        required:true,
+
+
+                    },
+                    password:{
+                        required: true,
+         				minlength: 5
+                    }
+                },
+                messages:{
+                    username:{
+                        required:"必填",
+
+                    },
+                    password:{
+                        required: "不能为空",
+                        minlength: "密码长度不能小于 5 个字母"
+                    }
+                },
+             errorPlacement: function(error) {
+	             	if(!$("#message").text()){
+	             		error.appendTo($("#message"));
+	             	}
+
+				}
+            });
+
+
+        });
+
+    </script>
+    <script>
+	 function get_code(codes) {
+        codes.src = '/users/get_code/?id=' + Math.random();
+    }
+
+    </script>
+    {% endblock %}

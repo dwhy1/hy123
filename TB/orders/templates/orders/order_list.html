@@ -1,0 +1,35 @@
+{% extends 'users/userinfo.html' %}
+
+{% block aaa %}
+<div class="container">
+    <div class="col-md-8 " style="border: solid 1px #888;padding: 30px">
+        <h4>所有订单：</h4>
+        <table class="table table-hover">
+            <tr>
+                <td>订单号</td>
+                <td>订单地址</td>
+                <td>订单总价</td>
+                <td>订单时间</td>
+                <td>订单详情</td>
+                <td>订单删除</td>
+            </tr>
+            <tr>
+             {% for i in order_list %}
+            <td> {{i.id}}</td>
+            <td> {{i.addr|truncatechars:15}}</td>
+            <td>{{i.total}}</td>
+            <td>{{i.time}}</td>
+            <td><a href="{% url 'orders:order_detail' i.id %}">详情</a></td>
+            <td><a href="{% url 'orders:del_order' i.id %}">删除</a></td>
+            </tr>
+            {% empty %}
+            <h3>没有订单</h3>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+
+
+{% endblock %}
+
+

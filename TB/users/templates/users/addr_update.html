@@ -1,0 +1,29 @@
+{% extends 'users/userinfo.html' %}
+
+{% block aaa %}
+<div class="container">
+    <div class="col-md-7 col-md-offset-1" style="border: solid 1px #888;padding: 30px">
+        <ul style="font-size: 17px;"><h4>收货地址管理：</h4>
+            <form action="/users/addr_update/" method="post">
+                {% csrf_token %}
+                {% for i in addr_list %}
+                 {% if i.status == 1 %}
+                设为默认：<input type="radio" name='addr_default' value="{{i.id}}" checked><span> {{i.recv}} | {{i.phone}} |　{{i.province}}　｜　{{i.city}}　｜　{{i.intro}} |<a
+                    href="{% url 'users:addr_del' i.id %}" onclick="return confirm('确认删除吗？')">删除</a> |
+             <input type="submit" value="确定"></span><br><br>
+                {% else %}
+                设为默认：<input type="radio" name='addr_default' value="{{i.id}}"><span> {{i.recv}} | {{i.phone}} |　{{i.province}}　｜　{{i.city}}　｜　{{i.intro}} |<a
+                    href="{% url 'users:addr_del' i.id %}" onclick="return confirm('确认删除吗？')">删除</a> |
+             <input type="submit" value="确定"></span><br><br>
+                {% endif %}
+                {% empty %}
+                    <p>没有地址，快去添加吧！！</p>
+                {% endfor %}
+            </form>
+        </ul>
+    </div>
+
+</div>
+
+
+{% endblock %}

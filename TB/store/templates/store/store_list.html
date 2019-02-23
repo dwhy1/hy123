@@ -1,0 +1,45 @@
+{% extends 'users/userinfo.html' %}
+
+{% block aaa %}
+<div class="container-fluid">
+  <div class="row">
+      <div class="col-md-12 col-md-offset-0">
+          <table class="table table-bordered table-hover table-striped" >
+              <tr>
+                  <td>店铺封面</td>
+                  <td>店铺标识</td>
+                  <td>店铺名字</td>
+                  <td>店铺介绍</td>
+                  <td>店铺状态</td>
+
+                  <td>店铺详情</td>
+              </tr>
+              {% for i in lists %}
+            <tr>
+                <td ><img src="/{{i.cover}}" alt="" class="img-circle" width="100px" height="100px"></td>
+                <td style="line-height: 100px;">{{i.id}}</td>
+                <td style="line-height: 100px;">{{i.name}}</td>
+                <td style="line-height: 100px;">{{i.intro}}</td>
+                {% if i.status == 1 %}
+                <td style="line-height: 100px;">---营业中---</td>
+                {% elif i.status == 0 %}
+                <td style="line-height: 100px;">---歇业了---</td>
+                {% elif i.status == 2 %}
+                <td style="line-height: 100px;">---店铺关闭---</td>
+                {% endif %}
+
+                <td ><a href="{% url 'store:storeinfo' i.id %}"><button type="button"  style="height: 35px;margin-top: 35px;background:#c80a28;width: 90px;" >店铺详情</button></a></td>
+            </tr>
+              {% empty%}
+              <tr>
+                <td>没有店铺 <a href="{% url 'store:add' %}">快去开店吧</a> </td>
+            </tr>
+              {% endfor %}
+
+          </table>
+
+      </div>
+  </div>
+</div>
+
+{% endblock%}

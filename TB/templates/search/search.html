@@ -1,0 +1,40 @@
+{% extends 'index.html' %}
+{% block content %}
+<div style="margin: auto;text-align: center">
+{% if query %}
+<h3>搜索结果如下：</h3>
+{% for result in page.object_list %}
+<a href="/goods/{{ result.object.id }}/goods_info/">
+    <ul>
+        <li><img src="/{{ result.object.goodsimg_set.all.last.path }}" alt="" style="width: 200px; height: 200px;margin: auto;"></li>
+        <li>名称：{{ result.object.name }}</li>
+        <li>价格：{{ result.object.price }}</li>
+        <li>库存：{{ result.object.stock }}</li>
+
+    </ul>
+</a><br/>
+{% empty %}
+<p>啥也没找到</p>
+{% endfor %}
+{% if page.has_previous or page.has_next %}
+<div>
+    {% if page.has_previous %}
+    <a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">
+        {% endif %}
+        &laquo; 上一页
+        {% if page.has_previous %}
+    </a>
+    {% endif %}
+    |
+    {% if page.has_next %}
+    <a href="?q={{ query }}&amp;page={{ page.next_page_number }}">
+        {% endif %}
+        下一页 &raquo;
+        {% if page.has_next %}
+    </a>
+    {% endif %}
+</div>
+{% endif %}
+{% endif %}
+</div>
+{% endblock %}

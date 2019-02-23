@@ -1,0 +1,32 @@
+{% extends 'users/userinfo.html' %}
+
+{% block aaa %}
+<div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-7 col-md-offset-2">
+                       <form action="{% url 'store:add' %}" name="formMobile" id="formMobile" style="display:block" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+						<ul class="">
+							<li>
+								<div class="register-list-name">店铺名字：</div>
+								<input id='name' type="text" value="" class="" name="name" />
+							</li>
+							<li style="margin-top: 20px">
+								<div class="register-list-name">店铺介绍：</div>
+								<textarea name="intro" cols="30" rows="10"></textarea>
+							</li>
+							<li style="margin-left: 120px">
+								<div class="register-list-con register_tipsBox1">
+                                    <input type="file"value="" name="cover">
+								</div>
+							</li>
+							<li>
+								<input type="submit" id="btn" value="开店" class="register-list-agree" id='register_submit'/>
+							</li>
+						</ul>
+					</form>
+                    </div>
+
+                </div>
+            </div>
+{% endblock %}

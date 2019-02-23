@@ -1,0 +1,140 @@
+{% extends 'index.html' %}
+{% block title%}用户信息{% endblock %}
+{% block s%}
+<div class="search">
+			<form action="" method="">
+				<input class="txt" type="text">
+				<input class="search-btn"  type="button" value="搜索">
+			</form>
+		</div>
+{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet" href="/static/js/lib/bootstrap-3.3.7-dist/css/bootstrap.css">
+<script src="/static/js/lib/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+<div class="user_main">
+    <div class="user_wrap">
+        <h1 class="crumbs" style="font-weight:100">
+            您当前的位置:<a href="" target="_blank">韩都衣舍</a> &gt; <a href="" target="_blank">我的韩都</a>
+        </h1>
+        <div class="user_left">
+            <a href="" class="home">
+                <span>我的韩都</span>
+            </a>
+            <div class="nav">
+                <dl class="menu">
+                    <dt>个人信息<span class="arrow"></span></dt>
+                    <dd>
+                        <ul>
+                            <li><a href="{% url 'users:userinfo' %}">个人信息</a></li>
+                            <li><a href="{% url 'users:changeinfo' %}">修改信息</a></li>
+                            <li><a href="{% url 'users:add_addr' %}">添加地址</a></li>
+                            <li><a href="{% url 'users:addr_update' %}">地址管理</a></li>
+                            <li><a href="/admin/">后台管理</a></li>
+                        </ul>
+                    </dd>
+                </dl>
+                <dl class="menu">
+                    <dt>交易管理<span class="arrow"></span></dt>
+                    <dd style="width: 150px">
+                        <ul>
+                            <li><a href="{% url 'shopcart:shopcart_info'%}" target="_blank">我的购物车</a></li>
+                            <li><a href="{% url 'orders:order_list' %}">我的订单</a></li>
+                            <li class="last"><a href="user.php?act=collection_list">我的收藏</a></li>
+                        </ul>
+                    </dd>
+                </dl>
+                <dl class="menu">
+                    <dt>店铺管理<span class="arrow"></span></dt>
+                    <dd style="width: 150px">
+                        <ul>
+                            <li><a href="{% url 'store:add' %}">我要开店</a></li>
+                            <li><a href="{% url 'goods:add_type' %}">添加商品类型</a></li>
+                            <li><a href="{% url 'store:store_list' %}" target="_blank">我的所有店铺</a></li>
+
+                        </ul>
+                    </dd>
+                </dl>
+                <dl class="menu" >
+                    <dt>账户管理<span class="arrow"></span></dt>
+                    <dd style="width: 150px">
+                        <ul>
+                            <li><a href="">我的特权</a></li>
+                            <li><a href="">我的积分</a></li>
+                            <li><a href="">我的优惠券</a></li>
+                            <li><a href="">我的包邮卡</a></li>
+                            <li><a href="">SVIP激活</a></li>
+                        </ul>
+                    </dd>
+                </dl>
+
+            </div>
+        </div>
+
+        <div class="user_right">
+            <h5 style="text-align: center ; color: red ;">{{msg}}</h5>
+            {% block aaa %}
+            <div class="container-fluid">
+                <div class="row">
+
+                    <div class="col-md-9 col-md-offset-2">
+                        <ul class="list-group" style="text-align:center;font-size: 17px">
+                            <li class="list-group-item">
+                                <img src="/{{user.userinfo.avatar}}" alt="用户头像" class="img-circle avatar"
+                                     width="200px" height="200px" style="margin: auto">
+                            </li>
+                            <li class="list-group-item " style="">
+                                用户标识：{{user.id}}
+                            </li>
+                            <li class="list-group-item" style=" ">
+                                用户名称：{{user.username}}
+                            </li>
+                            <li class="list-group-item" style=" ">
+                                用户昵称：{{user.userinfo.nickname}}
+                            </li>
+                            <li class="list-group-item" style=" ">
+                                用户性别：{{user.userinfo.sex}}
+                            </li>
+                            <li class="list-group-item" style=" ">
+                                用户年龄：{{user.userinfo.age}}
+                            <li class="list-group-item" style=" ">
+                                用户邮箱：{{user.email}}
+                            </li>
+                            <li class="list-group-item" style=" ">
+                                用户电话：{{user.userinfo.phone}}
+                            </li>
+                            <li class="list-group-item" style=" ">
+                                注册时间：{{user.date_joined}}
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+            {% endblock %}
+        </div>
+
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+
+        $(".menu dt").each(function () {
+            $(this).click(function () {
+                if ($(this).next().is(":hidden")) {
+                    $(this).removeClass("hid");
+                    $(this).next().show();
+                } else {
+                    $(this).addClass("hid");
+                    $(this).next().hide();
+
+                }
+            });
+        });
+
+    });
+</script>
+{% endblock %}
+
+

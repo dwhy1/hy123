@@ -1,0 +1,27 @@
+{% extends 'users/userinfo.html' %}
+{% block aaa %}
+<script type="text/javascript" src="/static/users/js/addr.js"></script>
+
+<div style="margin: auto;text-align: center;border: solid 1px #888888;width: 600px;padding: 20px">
+    <form action="/users/add_addr/" method="post">
+        {% csrf_token %}
+        收件人：<input type="text" name="recv"><br><br>
+        手机号：<input type="text" name="phone"><br><br>
+        地区：<select id="area" name="diqu"></select>
+        省：<select id="cmbProvince" name="province"></select>
+        市：<select id="cmbCity" name="city"></select>
+        区：<select id="cmbArea" name="qu"></select>
+        <br/><br/>
+        <p>详细地址：<input type="text" name="intro"></p>
+        <p style="margin-left: -230px">默认地址：<input type="checkbox" name="status"></p>
+        <button ype="submit" style="margin-left: 230px">添加地址</button>
+    </form>
+
+
+    <script type="text/javascript">
+        addressInit('area', 'cmbProvince', 'cmbCity', 'cmbArea', '西北地区', '北京', '市辖区', '东城区');
+        //addressInit('Select1', 'Select2', 'Select3');
+    </script>
+</div>
+
+{% endblock %}

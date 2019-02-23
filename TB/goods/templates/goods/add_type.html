@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{{msg}}
+<form action="{% url 'goods:add_type' %}" method="post">
+    {% csrf_token %}
+    类型：<input type="text" name="id1" ><br>
+    类型名称<input type="text" name="gt_name" ><br>
+    类型描述<input type="text" name="gt_desc" ><br>
+    父级类型：<input type="text" name="parent_id" placeholder="添加一级类型 不填此项"><br>
+    <input type="submit" value="提交">
+
+
+</form>
+
+</body>
+</html>

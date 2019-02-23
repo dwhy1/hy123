@@ -1,0 +1,50 @@
+{% extends 'users/userinfo.html' %}
+
+{% block aaa %}
+<div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-7 col-md-offset-2">
+                       <form action="{% url 'store:update_store' store.id %}" name="formMobile" id="formMobile" style="display:block" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+						<ul class="">
+							<li>
+								<div class="register-list-name">店铺名字：</div>
+								<input id='name' type="text" value="{{store.name}}" class="" name="name" />
+							</li>
+							<li style="margin-top: 20px">
+								<div class="register-list-name">店铺介绍：</div>
+								<textarea name="intro">{{store.intro}}</textarea>
+							</li>
+							<li style="margin-top: 20px">
+								<div class="register-list-name">店铺状态：</div>
+                                {% if store.status == 1 %}
+                                <input type="radio" name="status" value="1" checked>营业
+                                <input type="radio" name="status" value="0">歇业
+                                <input type="radio" name="status" value="2">闭店
+                                 {% elif store.status == 0 %}
+                                <input type="radio" name="status" value="1" >营业
+                                <input type="radio" name="status" value="0" checked>歇业
+                                <input type="radio" name="status" value="2">闭店
+                                 {% elif store.status == 2 %}
+                                <input type="radio" name="status" value="1" >营业
+                                <input type="radio" name="status" value="0">歇业
+                                <input type="radio" name="status" value="2" checked>闭店
+                                {% endif%}
+							</li>
+                            <li style="margin-left: 120px">
+                                <img src="/{{store.cover}}" alt="" style="width: 200px;height: 200px;">
+								<div class="register-list-con register_tipsBox1">
+                                    <input type="file" name="cover" >
+								</div>
+							</li>
+							<li>
+								<input type="submit" id="btn" value="修改店铺" class="register-list-agree" onclick="return confirm('确认修改吗？')" id='register_submit'/>
+							</li>
+						</ul>
+					</form>
+                    </div>
+
+                </div>
+            </div>
+
+{% endblock%}

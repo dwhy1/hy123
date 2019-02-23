@@ -1,0 +1,108 @@
+{% extends 'index.html'%}
+{% block title %}购物车页面{% endblock %}
+{% block link %}
+{% load static %}
+<link rel="stylesheet" href="/static/css/style.css">
+<link rel="stylesheet" href="/static/css/index.css">
+<link rel="stylesheet" href="/static/css/login.css">
+<link rel="stylesheet" href="/static/css/product.css">
+<link rel="stylesheet" href="/static/css/jqzoom.css">
+<link rel="stylesheet" href="/static/css/user.css">
+<script type="text/javascript" src="/static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="/static/js/index.js"></script>
+<script type="text/javascript" src="/static/js/jquery.validate.js"></script>
+<script type="text/javascript" src="/static/js/messages_zh.js"></script>
+<script type="text/javascript" src="/static/js/jqzoom.pack.1.0.1.js"></script>
+<script type="text/javascript" src="/static/js/product.js"></script>
+<script type="text/javascript" src="/static/js/jquery.cookie.js"></script>
+<link rel="stylesheet" href="/static/js/lib/bootstrap-3.3.7-dist/css/bootstrap.css">
+<script src="/static/shopcart/jquery-1.12.4.min.js"></script>
+<script src="/static/js/lib/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+
+
+{% endblock %}
+{% block s %}{% endblock %}
+{% block content %}
+<h3 style="color: #b92c28;text-align: center">{{msg}}</h3>
+<div class="container">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="row">
+            <form action="{% url 'orders:order_confirm' %}" method="post">
+                {% csrf_token %}
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h2 class="panel-title"><input type="checkbox" style="width:20px;height: 20px;" name=""
+                                                       id="check_all">全选</h2>
+                    </div>
+                    {% for shop_cart in shoplist %}
+                    <div class="panel-body"
+                         style="border:solid 1px #ddd;border-left: 1px solid transparent;border-right: 1px solid transparent;">
+                        <div class="shop_cart_item ">
+                            <div class="col-md-12">
+
+                                <div class="col-md-2 col-md-offset-1">
+                                    <input type="checkbox" style="width:20px;height: 20px;" name="buy_goods_id"
+                                           value="{{shop_cart.id}}">
+                                    <img style="width: 100px;height: 100px;"
+                                         src="/{{shop_cart.goods.goodsimg_set.all.last.path}}" alt="">
+                                </div>
+                                <div class="col-md-8">
+                                    <br>
+                                    <span class="goods_name size1" style="margin-right: 100px">商品名称：{{shop_cart.goods.name}}</span>
+                                    <span class="good_price size1" data-m="{{shop_cart.goods.price}}">
+                                        商品价格：{{shop_cart.goods.price}}</span>
+
+                                    <div class="amount_box" style="margin-top: 20px">
+                                        <span class="reduce" down_goods_id="{{shop_cart.id}}"
+                                              style="cursor: pointer">-</span>
+                                        <input style="width: 80px;" type="number" name="count" value="{{shop_cart.num}}"
+                                                id = 'sum' class="sum">
+                                        <span class="add" up_goods_id="{{shop_cart.id}}"
+                                              style="cursor: pointer">+</span>
+                                    </div>
+                                    <br>
+                                    <span class="subtotal size1">小计金额：<span>{{shop_cart.subtotal}}</span></span>
+                                </div>
+                                <div style="float:right;">
+                                    <br><br><br><br>
+                                    <a class="del-cart" style="cursor:pointer;" goods_id="{{shop_cart.id}}" href="{% url 'shopcart:del_shopcart' shop_cart.id %}" >删除</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <div class="shop_cart_item">购物车为空,<a style="color:red " href="{% url 'users:index' %}">去购物！</a>
+                    </div>
+                    {% endfor %}
+                </div>
+                <button type="submit" class="btn btn-danger">提交订单</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<div class="div_deleted">
+    <h1 id="show_del_msg"></h1>
+    <ul class='deleted'>
+
+    </ul>
+</div>
+<div class='h' style='display:none  '>
+    <div class="slide">
+        <div class="item">
+            <a href="goods-1048857.html" title="" target="_blank">
+                <img src="http://s.handuyishe.com/images/201608/thumb_img/1471375810213443189.jpg"
+                     alt="Soneed韩版2016秋装新款女装低腰毛边磨皮开叉牛仔裤UE6161皛0816"
+                     title="Soneed韩版2016秋装新款女装低腰毛边磨皮开叉牛仔裤UE6161皛0816">
+            </a>
+            <p><a href="goods-1048857.html" title="" target="_blank">Soneed韩版2016秋装新款女装低腰毛边磨皮开叉牛仔裤UE6161皛0816 </a>
+            </p>
+            <p><span class="price">￥258</span></p>
+        </div>
+    </div>
+</div>
+<script src="{% static 'shopcart/js/app/shop_cart_del.js' %}"></script>
+<script src="{% static 'shopcart/js/app/shop_cart_info.js' %}"></script>
+
+{% endblock %}

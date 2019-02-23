@@ -1,0 +1,93 @@
+{% extends 'users/userinfo.html' %}
+
+{% block aaa %}
+<div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-7 col-md-offset-2">
+                       <form action="{% url 'goods:update_goods' goods.id %}" name="formMobile" id="formMobile" style="display:block" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+						<ul class="">
+							<li>
+								<div class="register-list-name">商品名字：</div>
+								<input  type="text" value="{{goods.name}}" class="" name="name" />
+							</li>
+							<li style="margin-top: 20px">
+								<div class="register-list-name">商品介绍：</div>
+                                <input  type="text" value="{{goods.desc}}" class="" name="desc" />
+							</li>
+                            <li style="margin-top: 20px">
+								<div class="register-list-name">商品库存：</div>
+                                <input  type="text" value="{{goods.stock}}" class="" name="stock" />
+							</li>
+                            <li style="margin-top: 20px">
+								<div class="register-list-name">商品价格：</div>
+                                <input  type="text" value="{{goods.price}}" class="" name="price" />
+							</li>
+							<li style="margin-top: 20px">
+								<div class="register-list-name">商品图片：</div>
+                                <input type="file" name="cover" multiple="multiple" />
+
+							</li>
+							{% comment %}<li style="margin-top: 20px">
+								<div class="register-list-name">商品类型：</div>
+
+                                <select name="type1" id="type1">
+									<option value="">请选择一级类型</option>
+									{% for i in type1 %}
+									<option value="{{i.id}}">{{i.gt_name}}</option>
+									{% empty %}
+									{% endfor %}
+								</select>
+								<select name="type2" id="type2">
+
+								</select>
+							</li>{% endcomment %}
+							<li style="margin-top: 20px">
+								{% if goods.status == 1 %}
+								<div class="register-list-name">商品状态：</div>
+                                <input type="radio" name="status" value="1" checked>上架
+                                <input type="radio" name="status" value="0">下架
+								{% elif goods.status == 0 %}
+								<div class="register-list-name">商品状态：</div>
+                                <input type="radio" name="status" value="1" >上架
+                                <input type="radio" name="status" value="0" checked>下架
+
+								{% endif %}
+							</li>
+							<li>
+								<input type="submit" id="btn" value="修改商品" class="register-list-agree" />
+							</li>
+						</ul>
+					</form>
+                    </div>
+
+                </div>
+            </div>
+<script>
+	//上传商品类型选择
+	$(function () {
+	    $('#type1').on('change',function () {
+	        types=$(this).val();
+	        $.ajax({
+				url:'/goods/select2/',
+				data:{'type1':types},
+				dataType:'JSON',
+				type:'GET',
+				success:function (data) {
+				    console.log(data)
+				    $('#type2').empty();
+				    for (var index in data){
+						var type3 = data[index];
+						$op=$('<option>');
+						$op.attr('value',type3.pk);
+						$op.text(type3.fields.gt_name);
+						$('#type2').append($op)
+					}
+                }
+			})
+    })
+    })
+
+</script>
+
+{% endblock%}

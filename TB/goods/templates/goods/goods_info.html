@@ -1,0 +1,934 @@
+{% extends 'index.html' %}
+{% block title %}商品中心{% endblock %}
+{% block link %}
+<link rel="stylesheet" href="/static/css/style.css">
+<link rel="stylesheet" href="/static/css/index.css">
+<link rel="stylesheet" href="/static/css/login.css">
+<link rel="stylesheet" href="/static/css/product.css">
+<link rel="stylesheet" href="/static/css/jqzoom.css">
+
+
+<script type="text/javascript" src="/static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="/static/js/index.js"></script>
+<script type="text/javascript" src="/static/js/jquery.validate.js"></script>
+<script type="text/javascript" src="/static/js/messages_zh.js"></script>
+<script type="text/javascript" src="/static/js/jqzoom.pack.1.0.1.js"></script>
+<script type="text/javascript" src="/static/js/product.js"></script>
+<script type="text/javascript" src="/static/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="/static/js/shopcart.js"></script>
+<script type="text/javascript" src="/static/js/shopcar.js"></script>
+{% endblock %}
+{% block content %}
+<input type="hidden" name="bbb" value="{{goods}}">
+<div id="product-container">
+    <div class="product-path">
+        您所在的位置<span>></span><a href="">韩都衣舍</a><span>></span><a href="">SONEED女装</a><span>></span>
+        <a href="">{{goods.goodstype.gt_name}}</a><span>></span>{{goods.name}}
+    </div>
+    <!--详情页左侧侧边栏-->
+    <div class="side-bar">
+        <ul class="hot-guide">
+            <h1>商品分类</h1>
+            <li><a href="">休闲裤</a></li>
+            <li><a href="">牛仔裤</a></li>
+            <li><a href="">短裤</a></li>
+        </ul>
+        <a href="" class="new-example"><img src="/static/img/product/1470880931507587404.png" alt="" width:"170"
+            height:"125" /></a>
+        <div class="new-goods share">
+            <h1></h1>
+            <ul>
+                <li class="new-box">
+                    <a href="">
+                        <img src="/static/img/product/20160817030807_UC5747.jpg" alt=""/>
+                    </a>
+                    <ul>
+                        <li class="name"><a href="">Soneed韩版2016秋装新款女装纯色宽松镂空花边毛衣UC5747媱0816</a></li>
+                        <li class="price">
+                            <span class="now-price">￥159.00</span>
+                            <span class="old-price">￥258.00</span>
+                        </li>
+                    </ul>
+                    <div style="clear:both"></div>
+                </li>
+                <li class="new-box">
+                    <a href="">
+                        <img src="/static/img/product/20160817030815_UE6044.jpg" alt=""/>
+                    </a>
+                    <ul>
+                        <li class="name"><a href="">Soneed韩版2016秋装新款女装宽松立领拼接拉链雪纺衫UE6044皛0816</a></li>
+                        <li class="price">
+                            <span class="now-price">￥129.00</span>
+                            <span class="old-price">￥188.00</span>
+                        </li>
+                    </ul>
+                    <div style="clear:both"></div>
+                </li>
+                <li class="new-box">
+                    <a href="">
+                        <img src="/static/img/product/20160817030810_UE6161.jpg" alt=""/>
+                    </a>
+                    <ul>
+                        <li class="name"><a href="">Soneed韩版2016秋装新款女装低腰毛边磨皮开叉牛仔裤UE6161皛0816</a></li>
+                        <li class="price">
+                            <span class="now-price">￥148.00</span>
+                            <span class="old-price">￥258.00</span>
+                        </li>
+                    </ul>
+                    <div style="clear:both"></div>
+                </li>
+                <li class="new-box">
+                    <a href="">
+                        <img src="/static/img/product/20160817030812_UC5561.jpg" alt=""/>
+                    </a>
+                    <ul>
+                        <li class="name"><a href="">Soneed韩版2016秋装新款女装英伦格子收腰A字连衣裙UC5561媱0816</a></li>
+                        <li class="price">
+                            <span class="now-price">￥308.00</span>
+                            <span class="old-price">￥308.00</span>
+                        </li>
+                    </ul>
+                    <div style="clear:both"></div>
+                </li>
+                <li class="new-box">
+                    <a href="">
+                        <img src="/static/img/product/20160810030830_UE6162.jpg" alt=""/>
+                    </a>
+                    <ul>
+                        <li class="name"><a href="">Soneed韩版2016秋装新款女装毛边破洞直筒低腰牛仔裤UE6162皛0809</a></li>
+                        <li class="price">
+                            <span class="now-price">￥278.00</span>
+                            <span class="old-price">￥278.00</span>
+                        </li>
+                    </ul>
+                    <div style="clear:both"></div>
+                </li>
+            </ul>
+
+        </div>
+        <div class="hot-goods share">
+            <h1></h1>
+            <ul>
+                <li class="new-box">
+                    <a href="">
+                        <img src="/static/img/product/20160817030807_UC5747.jpg" alt=""/>
+                    </a>
+                    <ul>
+                        <li class="name"><a href="">Soneed韩版2016秋装新款女装纯色宽松镂空花边毛衣UC5747媱0816</a></li>
+                        <li class="price">
+                            <span class="now-price">￥159.00</span>
+                            <span class="old-price">￥258.00</span>
+                        </li>
+                    </ul>
+                    <div style="clear:both"></div>
+                </li>
+                <li class="new-box">
+                    <a href="">
+                        <img src="/static/img/product/20160817030815_UE6044.jpg" alt=""/>
+                    </a>
+                    <ul>
+                        <li class="name"><a href="">Soneed韩版2016秋装新款女装宽松立领拼接拉链雪纺衫UE6044皛0816</a></li>
+                        <li class="price">
+                            <span class="now-price">￥129.00</span>
+                            <span class="old-price">￥188.00</span>
+                        </li>
+                    </ul>
+                    <div style="clear:both"></div>
+                </li>
+                <li class="new-box">
+                    <a href="">
+                        <img src="/static/img/product/20160817030810_UE6161.jpg" alt=""/>
+                    </a>
+                    <ul>
+                        <li class="name"><a href="">Soneed韩版2016秋装新款女装低腰毛边磨皮开叉牛仔裤UE6161皛0816</a></li>
+                        <li class="price">
+                            <span class="now-price">￥148.00</span>
+                            <span class="old-price">￥258.00</span>
+                        </li>
+                    </ul>
+                    <div style="clear:both"></div>
+                </li>
+                <li class="new-box">
+                    <a href="">
+                        <img src="/static/img/product/20160817030812_UC5561.jpg" alt=""/>
+                    </a>
+                    <ul>
+                        <li class="name"><a href="">Soneed韩版2016秋装新款女装英伦格子收腰A字连衣裙UC5561媱0816</a></li>
+                        <li class="price">
+                            <span class="now-price">￥308.00</span>
+                            <span class="old-price">￥308.00</span>
+                        </li>
+                    </ul>
+                    <div style="clear:both"></div>
+                </li>
+                <li class="new-box">
+                    <a href="">
+                        <img src="/static/img/product/20160810030830_UE6162.jpg" alt=""/>
+                    </a>
+                    <ul>
+                        <li class="name"><a href="">Soneed韩版2016秋装新款女装毛边破洞直筒低腰牛仔裤UE6162皛0809</a></li>
+                        <li class="price">
+                            <span class="now-price">￥278.00</span>
+                            <span class="old-price">￥278.00</span>
+                        </li>
+                    </ul>
+                    <div style="clear:both"></div>
+                </li>
+            </ul>
+            <a href=""><img src="/static/img/product/1439186924043865480.jpg" alt="" width="170" height="125"/></a>
+        </div>
+
+    </div>
+    <div class="product-detail">
+        <div class="product-detail-top">
+            <div class="goods-detail-left">
+                <div class="gallery">
+                    <div class="gallery-content">
+                        <div class="zoomPad" style="position:relative">
+                            <img src="/{{goods.goodsimg_set.all.last.path}}" alt="" id="masterImage"
+                                 class="jqzoom" title="商品大图" width="480" style="display: inline-block;"/>
+                            <div class="zoomMove" style="display:none;left:0;top:0"></div>
+                        </div>
+                        <div class="zoomWindow">
+                            <div class="zoomWindow-title">商品大图</div>
+                            <div class="zoomWindow-con">
+                                <img src="/{{goods.goodsimg_set.all.last.path}}" alt=""/>
+                            </div>
+                        </div>
+                    </div>
+                    <!--放大镜导航-->
+                    <ul class="gallery-nav">
+                        {% for i in goods.goodsimg_set.all %}
+                        <li><a href="javascript:;"><span></span><img
+                                src="/{{i.path}}" alt=""></a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="dashed"></div>
+                <p><a href="" class="collect">收藏（0）</a></p>
+                <div id="bdshare">
+                    <span class="bd-more">分享到</span>
+                    <a href="#" class="bd-qzone" title="分享到QQ空间"></a>
+                    <a href="#" class="bd-tsina" title="分享到新浪微博"></a>
+                    <a href="#" class="bd-tqq" title="分享到腾讯微博"></a>
+                    <a href="#" class="bd-renren" title="分享到人人网"></a>
+                    <a href="#" class="bd-t163" title="分享到网易微博"></a>
+                    <a href="#" class="shareCount" title="累计分享3次">3</a>
+                </div>
+            </div>
+            <div class="goods-detail-right">
+                <div id="goods_detail_1" class="product_detail_info">
+                    <h1 class="product_name">
+                        {{goods.name}}<br>
+                    </h1>
+                    <ul>
+                        <li>
+                            商品货号：&nbsp;&nbsp;<span class="code">{{goods.id}}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                            售价：<span class="y">￥</span><span class="market_price">{{goods.price|add:'200'}}</span>
+                        </li>
+                        <li class="li_relative">
+                            促 销 价：
+                            <em class="promote_price"><span class="yy">￥</span>{{goods.price}}</em>
+                        </li>
+                        <li>销　　量：&nbsp;&nbsp;<span class="sale_count">{{goods.count}}</span></li>
+
+                    </ul>
+                </div>
+                <div id="goods_detail_3" class="product_detail_info">
+                    <div class="goods_attr text">
+                        <span class="label">尺码 <b>：</b></span>
+                        <ul attr_id="">
+                            <li class="" val="558428" l="S" title="S">
+                                <span>S</span>
+                                <s></s>
+                            </li>
+                            <li class="sel" val="558429" l="M" title="M">
+                                <span>M</span>
+                                <s></s>
+                            </li>
+                            <li class="" val="558430" l="L" title="L">
+                                <span>L</span>
+                                <s></s>
+                            </li>
+                        </ul>
+
+                    </div>
+                    <div class="goods_attr text">
+                        <span class="label">颜色 <b>：</b></span>
+                        <ul attr_id="">
+                            <li class="sel" val="558427" l="蓝色" title="蓝色">
+                                <span>蓝色</span>
+                                <s></s>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+                <script type="text/javascript">
+                    var sku_list = [{
+                        "goods_attr": "558427|558428",
+                        "product_number": "20"
+                    }, {"goods_attr": "558427|558429", "product_number": "25"}, {
+                        "goods_attr": "558427|558430",
+                        "product_number": "12"
+                    }];
+
+                    function set_def_selected() {
+                        if (sku_list.length > 0) {
+                            var def = sku_list[0];
+                            $.each(def['goods_attr'].split('|'), function (k, v) {
+
+                                $(".goods_attr li[val=" + v + "]").addClass('sel');
+
+                            });
+                            $('.goods_attr li.sel').eq(0).click().click();//锁定不可选的属性值
+                        }
+                        showSelectSKU();
+                    }
+
+                    //获取所有包含指定节点的路线
+                    function filterProduct(ids) {
+                        var result = [];
+                        $(sku_list).each(function (k, v) {
+                            _attr = '|' + v['goods_attr'] + '|';
+                            _all_ids_in = true;
+                            for (k in ids) {
+                                if (_attr.indexOf('|' + ids[k] + '|') == -1) {
+                                    _all_ids_in = false;
+                                    break;
+                                }
+                            }
+                            if (_all_ids_in) {
+                                result.push(v);
+                            }
+
+                        });
+                        return result;
+                    }
+
+                    // 根据已经选择得属性值，得到余下还能选择的属性值
+                    function filterAttrs(ids) {
+                        var products = filterProduct(ids);
+
+                        var result = [];
+                        $(products).each(function (k, v) {
+                            result = result.concat(v['goods_attr'].split('|'));
+
+                        });
+                        return result;
+                    }
+
+                    //已选择的节点数组
+                    function getSelAttrId() {
+
+                        var list = [];
+                        $('.goods_attr li.sel').each(function () {
+                            list.push($(this).attr('val'));
+                        });
+                        return list;
+                    }
+
+                    $('.goods_attr li').click(function () {
+                        if ($(this).hasClass('b')) {
+                            return;//被锁定了
+                        }
+                        if ($(this).hasClass('sel')) {
+                            $(this).removeClass('sel');
+                        } else {
+                            $(this).siblings().removeClass('sel');
+                            $(this).addClass('sel');
+
+                        }
+                        var select_ids = getSelAttrId();
+                        var filterP = filterProduct(select_ids);
+                        if (filterP.length == 1) {
+                            _show_product_num(filterP[0]['product_number']);
+                        }
+                        //已经选择了的规格
+                        var $_sel_goods_attr = $('li.sel').parents('.goods_attr');
+
+                        // step 1
+                        var all_ids = filterAttrs(select_ids);
+
+                        //获取未选择的
+                        var $other_notsel_attr = $('.goods_attr').not($_sel_goods_attr);
+
+                        //设置为选择属性中的不可选节点
+                        $other_notsel_attr.each(function () {
+                            set_block($(this), all_ids);
+
+                        });
+
+                        //step 2
+                        //设置已选节点的同级节点是否可选
+                        $_sel_goods_attr.each(function () {
+                            update_2($(this));
+                        });
+
+                        showSelectSKU();
+                    });
+
+                    function update_2($goods_attr) {
+                        // 若该属性值 $li 是未选中状态的话，设置同级的其他属性是否可选
+                        var select_ids = getSelAttrId();
+                        var $li = $goods_attr.find('li.sel');
+
+                        var select_ids2 = del_array_val(select_ids, $li.attr('val'));
+
+                        var all_ids = filterAttrs(select_ids2);
+
+                        set_block($goods_attr, all_ids);
+                    }
+
+                    function set_block($goods_attr, all_ids) {
+                        //根据 $goods_attr下的所有节点是否在可选节点中（all_ids） 来设置可选状态
+                        $goods_attr.find('li').each(function (k2, li2) {
+
+                            if ($.inArray($(li2).attr('val'), all_ids) == -1) {
+                                $(li2).addClass('b');
+                            } else {
+                                $(li2).removeClass('b');
+                            }
+
+                        });
+                    }
+
+                    function del_array_val(arr, val) {
+
+                        var a = [];
+                        for (k in arr) {
+                            if (arr[k] != val) {
+                                a.push(arr[k]);
+                            }
+                        }
+                        return a;
+                    }
+
+                    function showSelectSKU() {
+                        var $li_sel = $(".goods_attr li.sel");
+                        var goodsSelectedString = '你已选择了 ';
+                        var not_choose = true;
+                        //设置选择的属性字符串
+                        $li_sel.each(function () {
+
+                            _label = $(this).attr('l');
+                            if (typeof(_label) != 'undefined') {
+                                goodsSelectedString += '&nbsp;' + '[' + _label + ']';
+                                not_choose = false;
+                            }
+
+                        });
+
+                        if (not_choose) {
+                            goodsSelectedString = '您未选择';
+                        }
+                        $('#GoodsAttrSelectedString').show().html(goodsSelectedString);
+                    }
+
+                    //n =-1 显示原有库存
+                    function _show_product_num(n) {
+                        $("#goodsInventory .loading").hide();
+                        if (n > 0 || n == -1) {
+                            $("#goodsInventory .inventory").show();
+                            if (n == -1) {//设为总库存
+                                n = $("#goodsInventory .inventory").attr('total');
+                            }
+                            $("#goodsInventory b").html(n).show();
+
+
+                        } else {
+                            $("#goodsInventory .no_inventory").show();
+                        }
+                    }
+
+                    $('.goods_attr.img li').click(function () {
+                        var img = $(this).find('img').attr('bigsrc');
+                        if (typeof(img) !== 'undefined') {
+                            $('.videoplayer').hide();
+                            $(".colorImg").show().html('<img src="' + img + '" alt="" />');
+
+                        }
+                    })
+                </script>
+
+
+                <div id="goods_detail_2" class="product_detail_info">
+                    <div class="set">
+                        <span class="label">数　　量：</span>
+                        <span class="amount-widget" id="J_AmountWidget">
+			                <span class="increase" onclick="change_num(1)">+</span>
+			                <span class="decrease" onclick="change_num(-1)">-</span>
+			                <input name="recId" id="cartRecId" type="hidden" value="1">
+			                <input type="text" onchange="gaibian(this)" name="goods_number" id="goodsNumber"
+                                   class="text" value="1" maxlength="3" title="请输入购买量">
+			                <input name="goodsPrice" type="hidden" value="46">
+				            </span>
+                        <span id="goodsInventory">
+				                <font class="inventory" total="{{goods.stock}}">（库存<b>{{goods.stock}}</b>件）</font>
+			            	</span>
+                    </div>
+                    <p id="GoodsAttrSelectedString">你已选择了 &nbsp;[M]&nbsp;[蓝色]</p>
+                    <input type="hidden" name="GoodsId" id="goods_id" value="1048857">
+                    <p class="detail_btn_set" class="scBox">
+                        <a class="fl detail_btn buy" href="javascript:void(0);" title="点击购买"></a>
+                        {#通过ajax传输商品id 和 数量#}
+                        <a class="fl detail_btn addCart"  goodsid="{{goods.id}}" id="spc" title="加入购物车"></a>
+                    </p>
+                </div>
+                <div class="  product_detail_info" style="border-bottom:none;">
+                    <div class="extra_info">
+                        <ul class="line1">
+                            <li class="et_qqonline">
+                                <a href="javascript:NTKF.im_openInPageChat();">
+                                    <span>在线客服:</span>
+                                    <span class="et_icon payway3"></span>
+                                </a>
+                            </li>
+
+                            <li class="et_weixian" style="margin-left:30px;">
+                                <a id="zzy_weixin">
+                                    <span>官方微信:</span>
+                                    <span class="et_icon"></span>
+                                    <img src="/static/img/product/qrcode_for_hdw3.jpg" width="170" height="170"
+                                         class="qrcode" style="left:-30px;">
+                                </a>
+                                <img src="/static/img/product/sys.gif" class="sao">
+                            </li>
+                            <div class="clear"></div>
+                        </ul>
+                        <div class="goods_payway line2">
+                            <label>支付方式:</label>
+                            <a href="http://www.handuyishe.com/helper-22-121.html#xx_121"><span>支付宝</span></a>
+                            <a href="http://www.handuyishe.com/helper-22-121.html#xx_121"><span>网上银行付款</span></a>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <label>服务承诺：</label>
+                            <span class="sv_icon sv_icon1" title="100%正品保证"></span>
+                            <span class="sv_icon sv_icon2" title="7天无理由退换货"></span>
+                            <span class="sv_icon sv_icon3" title="安全快速退款"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="flat_tab" class="fr">
+        <div id="J_TabBarBox" class="">
+            <ul id="J_TabBar" class="tabbar tm-clear">
+                <li class="current"><a href="javascript:void(0)">商品详情</a></li>
+                <li><a id="goods_comments_a" href="javascript:void(0)">评论详情 <span
+                        style="color:#c80a28;font-weight:normal;font-size: 12px;">(0)</span></a></li>
+
+                <li><a href="http://www.handu.com/helper-61-728.html" target="_blank">常见问题</a></li>
+
+            </ul>
+
+        </div>
+        <ul class="flat_content">
+            <li style="display: block;">
+
+                <div class="attributes-list" id="J_AttrList">
+                    <ul id="J_AttrUL">
+                        <li id="J_attrBrandName" title="Soneed女装">品牌:&nbsp;Soneed女装</li>
+                        <li>货号：UE6161</li>
+                        <li>尺码:
+                            &nbsp;S&nbsp;M &nbsp;L
+                        </li>
+                        <li>颜色:
+                            &nbsp;蓝色
+                        </li>
+                    </ul>
+                </div>
+
+
+                <div class="goods_desc" style="text-align: center;">
+
+                    <div></div>
+
+                    <div></div>
+                    <p>{% for i in goods.goodsimg_set.all %}
+                        <img align="absmiddle" src="/{{i.path}}">
+                        {% endfor %}
+
+                    </p>
+                    <div align="center">
+                        <img src="/static/img/product/TB2FLooiXXXXXamXXXXXXXXXXXX_!!1579880734.jpg">
+                        <table align="center" border="0" cellpadding="0" cellspacing="0" width="750">
+                            <tbody>
+                            <tr>
+                                <td rowspan="3" width="347">
+                                    <table border="0" cellpadding="0" cellspacing="0" width="347">
+                                        <tbody>
+                                        <tr>
+                                            <td>
+                                                <img align="absmiddle"
+                                                     src="/static/img/product/TB29XNLXe_yQeBjy0FlXXczrXXa_!!1579880734.jpg">
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <table align="right" border="0" cellpadding="0" cellspacing="0" height="320"
+                                           width="390">
+                                        <tbody>
+                                        <tr>
+                                            <td>
+                                                <table align="right" cellpadding="0" cellspacing="0" height="452"
+                                                       style="color:#5c5c5c;font-family:微软雅黑;font-size:12px;"
+                                                       width="390">
+                                                    <tbody>
+                                                    <tr>
+                                                        <td align="left" bgcolor="#ffffff" height="32"
+                                                            style="color:#5c5c5c;font-family:微软雅黑;font-size:12px;">
+                                                            &nbsp;
+                                                        </td>
+                                                        <td align="left" bgcolor="#ffffff" colspan="3">&nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="left" bgcolor="#ffffff" colspan="2" height="50"
+                                                            style="color:#5c5c5c;font-family:微软雅黑;font-size:14px;">
+                                                            <div align="left">
+		                    														<span style="color:#5c5c5c;font-family:微软雅黑;font-size:12px;">
+		                    															<strong>Name/货号：</strong>
+		                    															UE6161
+		                    														</span>
+                                                            </div>
+                                                        </td>
+                                                        <td align="left" bgcolor="#ffffff" colspan="2">&nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="left" bgcolor="#ffffff" colspan="2" height="30"
+                                                            style="color:#5c5c5c;font-family:微软雅黑;font-size:12px;">
+                                                            <strong>Color/颜色：</strong>蓝色
+                                                        </td>
+                                                        <td align="left" bgcolor="#ffffff" colspan="2">&nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="left" colspan="2" height="30"
+                                                            style="border-top:1px solid #e5e5e5;color:#5c5c5c;font-family:微软雅黑;font-size:12px;">
+                                                            <div align="left"><strong>Size/尺码：</strong>S M L</div>
+                                                        </td>
+                                                        <td align="left" bgcolor="#ffffff" colspan="2"
+                                                            style="border-top:1px solid #e5e5e5;">
+                                                            <strong>Season/季节：</strong>秋季
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="left" bgcolor="#ffffff" colspan="4" height="30"
+                                                            style="border-top:1px solid #e5e5e5;color:#5c5c5c;font-family:微软雅黑;font-size:12px;">
+                                                            <strong>Fabric/面料：</strong>98%棉2%氨纶
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="center" colspan="4" height="20"
+                                                            style="color:#5c5c5c;font-family:微软雅黑;font-size:12px;">
+                                                            &nbsp;
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="center" colspan="4" height="30"
+                                                            style="color:#5c5c5c;font-family:微软雅黑;font-size:14px;">
+                                                            <div align="left"><strong>厚薄指数Thickness index</strong></div>
+
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="center" height="20"
+                                                            style="color:#5c5c5c;font-family:微软雅黑;font-size:12px;"><img
+                                                                align="center" border="0" height="25"
+                                                                src="/static/img/product/TB2oCoCjFXXXXXNXpXXXXXXXXXX_!!1579880734.jpg">薄
+                                                        </td>
+                                                        <td align="center" height="20"
+                                                            style="color:#5c5c5c;font-family:微软雅黑;font-size:12px;"
+                                                            width="96"><img align="center" alt="" border="0" height="25"
+                                                                            src="/static/img/product/TB2Ok.ZjFXXXXXBXXXXXXXXXXXX_!!1579880734.jpg">适中
+                                                        </td>
+                                                        <td align="center"
+                                                            style="color:#5c5c5c;font-family:微软雅黑;font-size:12px;"
+                                                            width="98"><img align="center" border="0" height="25"
+                                                                            src="/static/img/product/TB2oCoCjFXXXXXNXpXXXXXXXXXX_!!1579880734.jpg">厚
+                                                        </td>
+                                                        <td align="center" colspan="2"
+                                                            style="color:#5c5c5c;font-family:微软雅黑;font-size:12px;"><img
+                                                                align="center" border="0" height="25"
+                                                                src="/static/img/product/TB2oCoCjFXXXXXNXpXXXXXXXXXX_!!1579880734.jpg">加厚
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="center" bgcolor="#ffffff" colspan="4" height="30"
+                                                            style="color:#5c5c5c;font-family:微软雅黑;font-size:14px;">
+                                                            <div align="left"><strong>弹力指数Elastic index</strong></div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="center" height="20"
+                                                            style="color:#5c5c5c;font-family:微软雅黑;font-size:12px;"
+                                                            width="96">
+                                                            <img align="center" border="0" height="25"
+                                                                 src="/static/img/product/TB2oCoCjFXXXXXNXpXXXXXXXXXX_!!1579880734.jpg">适中
+                                                        </td>
+                                                        <td align="center"
+                                                            style="color:#5c5c5c;font-family:微软雅黑;font-size:12px;">
+                                                            <img align="center" alt="" border="0" height="25"
+                                                                 src="/static/img/product/TB2Ok.ZjFXXXXXBXXXXXXXXXXXX_!!1579880734.jpg">弹力
+                                                        </td>
+                                                        <td align="center"
+                                                            style="color:#5c5c5c;font-family:微软雅黑;font-size:12px;"><img
+                                                                align="center" border="0" height="25"
+                                                                src="/static/img/product/TB2oCoCjFXXXXXNXpXXXXXXXXXX_!!1579880734.jpg">微弹
+                                                        </td>
+                                                        <td align="center"
+                                                            style="color:#5c5c5c;font-family:微软雅黑;font-size:12px;"
+                                                            width="98"><img align="center" border="0" height="25"
+                                                                            src="/static/img/product/TB2oCoCjFXXXXXNXpXXXXXXXXXX_!!1579880734.jpg">无弹
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="center" colspan="4" height="30"
+                                                            style="color:#5c5c5c;font-family:微软雅黑;font-size:14px;">
+                                                            <div align="left"><strong>面料质感Soft index</strong></div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="center" height="20"
+                                                            style="color:#5c5c5c;font-family:微软雅黑;font-size:12px;"
+                                                            width="96"><img align="center" border="0" height="25"
+                                                                            src="/static/img/product/TB2oCoCjFXXXXXNXpXXXXXXXXXX_!!1579880734.jpg">超柔软
+                                                        </td>
+                                                        <td align="center"
+                                                            style="color:#5c5c5c;font-family:微软雅黑;font-size:12px;"><img
+                                                                align="center" alt="" border="0" height="25"
+                                                                src="/static/img/product/TB2oCoCjFXXXXXNXpXXXXXXXXXX_!!1579880734.jpg">柔软
+                                                        </td>
+                                                        <td align="center"
+                                                            style="color:#5c5c5c;font-family:微软雅黑;font-size:12px;"><img
+                                                                align="center" border="0" height="25"
+                                                                src="/static/img/product/TB2Ok.ZjFXXXXXBXXXXXXXXXXXX_!!1579880734.jpg">适中
+                                                        </td>
+                                                        <td align="center"
+                                                            style="color:#5c5c5c;font-family:微软雅黑;font-size:12px;"><img
+                                                                align="center" border="0" height="25"
+                                                                src="/static/img/product/TB2oCoCjFXXXXXNXpXXXXXXXXXX_!!1579880734.jpg">偏硬
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="left" bgcolor="#ffffff" colspan="4" height="30"
+                                                            style="color:#5c5c5c;font-family:微软雅黑;font-size:12px;">
+                                                            <strong>版式版型Style version of type</strong>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="center" height="20"
+                                                            style="color:#5c5c5c;font-family:微软雅黑;font-size:12px;"
+                                                            width="96"><img align="center" border="0" height="25"
+                                                                            src="/static/img/product/TB2oCoCjFXXXXXNXpXXXXXXXXXX_!!1579880734.jpg">适中
+                                                        </td>
+                                                        <td align="center" style="border-left:1px solid #ffffff;"><img
+                                                                align="center" border="0" height="25"
+                                                                src="/static/img/product/TB2oCoCjFXXXXXNXpXXXXXXXXXX_!!1579880734.jpg">合体
+                                                        </td>
+                                                        <td align="center"
+                                                            style="color:#000000;border-left:1px solid #ffffff;"><img
+                                                                align="center" alt="" border="0" height="25"
+                                                                src="/static/img/product/TB2oCoCjFXXXXXNXpXXXXXXXXXX_!!1579880734.jpg"
+                                                                style="color:rgb(92, 92, 92);">
+                                                            <span style="color:#5c5c5c;font-family:微软雅黑;font-size:12px;">宽松</span>
+                                                        </td>
+                                                        <td align="center" style="border-left:1px solid #ffffff;">
+		                    													<span style="color:#000000;border-left:1px solid #ffffff;">
+		                    													<img align="center" alt="" border="0"
+                                                                                     height="25"
+                                                                                     src="/static/img/product/TB2Ok.ZjFXXXXXBXXXXXXXXXXXX_!!1579880734.jpg"
+                                                                                     style="color:rgb(92, 92, 92);">
+		                    													<span style="color:rgb(92, 92, 92);line-height:1.5;">修身</span>
+		                    													<span style="color:#5c5c5c;font-family:微软雅黑;font-size:12px;"><br></span>
+		                    													</span>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr></tr>
+                                        <tr></tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div align="center"><img src="/static/img/product/TB2A6MfiXXXXXciXXXXXXXXXXXX_!!1579880734.jpg">
+                        </div>
+                        <table align="center" border="0" cellpadding="0" cellspacing="0" height="190"
+                               style="text-align:center;color:#ffffff;" width="750">
+                            <tbody>
+                            <tr>
+                                <td height="69" valign="middle" width="720">
+                                    <table align="center" border="0" cellpadding="0" cellspacing="0" height="115"
+                                           style="text-align:center;color:#ffffff;font-size:12px;" width="720">
+                                        <tbody>
+                                        <tr align="center" bgcolor="#303030" style="color:#ffffff;font-size:12px;">
+                                            <td height="25" width="93"><font color="#ffffff">尺码</font>
+                                            </td>
+                                            <td height="25" width="93"><font color="#ffffff">①腰围</font></td>
+                                            <td height="25" width="93"><font color="#ffffff">②臀围</font>
+                                            </td>
+                                            <td height="25" width="93"><font color="#ffffff">③大腿围</font>
+                                            </td>
+                                            <td height="25" width="93"><font color="#ffffff">④裤长</font>
+                                            </td>
+                                            <td height="25" width="93"><font color="#ffffff">⑤膝围</font>
+                                            </td>
+                                            <td height="25" width="93"><font color="#ffffff">⑥脚口围</font>
+                                            </td>
+                                            <td height="25" width="93"><font color="#ffffff">⑦前档</font>
+                                            </td>
+                                        </tr>
+                                        <tr align="center" style="color:#5c5c5c;font-size:12px;">
+                                            <td height="30" width="93">S</td>
+                                            <td height="30" width="93">62</td>
+                                            <td height="30" width="93">76</td>
+                                            <td height="30" width="93">47.6</td>
+                                            <td height="30" width="93">87</td>
+                                            <td height="30" width="93">33</td>
+                                            <td height="30" width="93">37</td>
+                                            <td height="30" width="93">44.6</td>
+                                        </tr>
+                                        <tr align="center" style="color:#5c5c5c;font-size:12px;">
+                                            <td height="30">M</td>
+                                            <td height="30">66</td>
+                                            <td height="30">80</td>
+                                            <td height="30">49</td>
+                                            <td height="30">88</td>
+                                            <td height="30">34</td>
+                                            <td height="30">38</td>
+                                            <td height="30">46</td>
+                                        </tr>
+                                        <tr align="center" style="color:#5c5c5c;font-size:12px;">
+                                            <td height="30">L</td>
+                                            <td height="30">70</td>
+                                            <td height="30">84</td>
+                                            <td height="30">50.4</td>
+                                            <td height="30">89</td>
+                                            <td height="30">35</td>
+                                            <td height="30">39</td>
+                                            <td height="30">47.4</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p>
+                        <img align="absmiddle" src="/static/img/product/TB2BpxLXlYxQeBjSszeXXa0spXa_!!1579880734.jpg">
+                        <img align="absmiddle" src="/static/img/product/TB2uJM0XqnyQeBjy1zkXXXmyXXa_!!1579880734.jpg">
+                    </p>
+                    <p>
+                        <img align="absmiddle" src="/static/img/product/TB2BNtLXabyQeBjy1XbXXa9yXXa_!!1579880734.jpg">
+                        <img align="absmiddle" src="/static/img/product/TB2snqUXqbyQeBjy1XbXXa9yXXa_!!1579880734.jpg">
+                        <img align="absmiddle" src="/static/img/product/TB2864KXjzyQeBjy1zdXXaInpXa_!!1579880734.jpg">
+                        <img align="absmiddle" src="/static/img/product/TB2ryc1XxjxQeBjSspcXXcQlXXa_!!1579880734.jpg">
+                        <img align="absmiddle" src="/static/img/product/TB2m6NKXjnyQeBjSspbXXazUXXa_!!1579880734.jpg">
+                        <img align="absmiddle" src="/static/img/product/TB2qdo2XxrxQeBjy1zeXXXhAVXa_!!1579880734.jpg">
+                        <img align="absmiddle" src="/static/img/product/TB2iExKXeTyQeBjSspfXXaI3FXa_!!1579880734.jpg">
+                    </p>
+                    <p>
+                        <img align="absmiddle" src="/static/img/product/TB2CEw2XuTyQeBjSspaXXcjjFXa_!!1579880734.jpg">
+                        <img align="absmiddle" src="/static/img/product/TB2PXyUXBTxQeBjSspoXXcP7XXa_!!1579880734.jpg">
+                        <img align="absmiddle" src="/static/img/product/TB2c773XxfxQeBjSsppXXXeoFXa_!!1579880734.jpg">
+                    </p>
+                    <p>
+                        <img align="absmiddle" src="/static/img/product/TB23N0LXlYxQeBjSspdXXb6QXXa_!!1579880734.jpg">
+                    </p>
+                </div>
+                <style>
+                    .baidu_hdys {
+                        width: 100%;
+                        float: left;
+                    }
+
+                    .baidu_hdys_img {
+                        margin: 0 auto;
+                        float: none;
+                        width: 750px;
+                    }
+                </style>
+                <div style=" margin: 0 auto;font-size: 14px;text-align: center;font-family: 微软雅黑;color: #5c5c5c;flaot:none;line-height:25px;">
+                    <span style="color:#000">没空去韩国？就来韩都衣舍官网！韩都衣舍官网，网上购物首选。</span>
+                </div>
+            </li>
+            <li>
+                <div id="ECS_COMMENT" style="width:1100px;margin:0 auto;float:none;">
+                    <div class="New_goodCONtitle" id="userConmentList" name="userConmentList">商品评论</div>
+                    <ul class="New_goodCONPLlist">
+                        <center style="padding:10px;">暂无评论</center>
+                    </ul>
+                    <div class="New_goodPage">
+                        <span class="f_l f6" style="margin-right:10px; padding:5px 10px;">共 <b>0</b> 条评论</span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+
+</div>
+<div style="clear:both"></div>
+
+
+<script type="text/javascript">
+    /*左右增加减少*/
+    function change_num(num) {
+        var n = parseInt($('#goodsNumber').val());
+        n = isNaN(n) ? 0 : n;
+        n = n + num;
+        n = (n > 999) ? 999 : n;
+        n = (n < 0) ? 0 : n;
+        $('#goodsNumber').val(n)
+        // console.log($('#goodsNumber').val())
+        rec_id = $("#cartRecId").val(n);
+        //changeCart(rec_id,num);
+        //
+        // return rec_id
+    }
+
+    function gaibian(obj) {
+        num = $(obj).val();
+        if (isNaN(num) || num <= 0) {
+            alert('请输入正确的购买数量');
+            return;
+        }
+        $(obj).val(num);
+        rec_id = $("#cartRecId").val();
+        changeCart(rec_id, num)
+    }
+
+</script>
+<script>
+    $(function(){
+        $('#spc').on('click',function () {
+            var $goodsid =$(this).attr('goodsid');
+            var $num = $('#goodsNumber').val();
+            $.ajax({
+                url:'/shopcart/'+$goodsid+'/'+ $num +'/add_shopcart/',
+                type:'get',
+                success:function (response) {
+                    alert(response)
+                },
+                error:function () {
+                    alert('添加失败')
+
+                }
+            })
+
+        })
+    })
+</script>
+
+{% endblock %}
