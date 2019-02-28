@@ -167,7 +167,7 @@ def reg_email(request):
             # 调用 JWT 来加密和解密需要的数据
             serializer = Serializer(settings.SECRET_KEY, expires_in=3600)
             code = serializer.dumps({"confirm": user.id}).decode("utf-8")
-            href = "http://ww.ljh.com/blog/active/" + code + "/"
+            href = "http://ww.ljh.com/user/active/" + code + "/"
             m_html = '<a href="' + href + '" target="_blank">马上点击激活，一个小时内有效</a>'
             send_mail(m_title, m_msg, settings.EMAIL_FROM, [email], html_message=m_html)
             return render(request, "users/login.html", {"msg": "恭喜您，注册成功，请登录邮箱激活账号！！"})

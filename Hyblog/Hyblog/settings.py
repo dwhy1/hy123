@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'user'
 ]
 
 MIDDLEWARE = [
@@ -77,11 +78,11 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'hyblog',
-        'USER':'root',
-        'PASSWORD':'123456',
+        'USER': 'root',
+        'PASSWORD': '123456',
         'HOST': '',
         'PORT': '3306',
-
+        'CHARSET': 'utf8'
     }
 }
 
@@ -124,8 +125,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# 静态公共资源配置
-
+# 静态公共资源配置d
 STATICFILES_DIRS = [
 
     os.path.join(BASE_DIR, 'static')
