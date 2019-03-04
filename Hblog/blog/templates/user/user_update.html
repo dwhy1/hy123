@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <meta charset="UTF-8">
+    <title>城南花已开</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1  maximum-scale=1">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="HandheldFriendly" content="True">
+    <link type="text/css" rel="stylesheet" href="/static/blog/css/bootstrap.css">
+    <script type="text/javascript" src="/static/blog/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/static/blog/js/jquery-2.1.4.js"></script>
+    <link rel="stylesheet" href="/static/blog/css/materialize.css">
+    <link rel="stylesheet" href="/static/blog/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/blog/css/normalize.css">
+    <link rel="stylesheet" href="/static/blog/css/owl.carousel.css">
+    <link rel="stylesheet" href="/static/blog/css/owl.theme.css">
+    <link rel="stylesheet" href="/static/blog/css/owl.transitions.css">
+    <link rel="stylesheet" href="/static/blog/css/fakeLoader.css">
+    <link rel="stylesheet" href="/static/blog/css/magnific-popup.css">
+    <link rel="stylesheet" href="/static/blog/css/style.css">
+    <link rel="shortcut icon" href="/static/blog/img/favicon.png">
+</head>
+<body>
+
+
+<!-- navbar top -->
+<div class="navbar-top">
+    <div class="side-nav-panel-left">
+        <a href="#" data-activates="slide-out-left" class="side-nav-left"><i class="fa fa-bars"></i></a>
+    </div>
+    <!-- site brand	 -->
+    <div class="site-brand">
+        <a href="{% url 'blog:index' %}"><h1>修改个人信息</h1></a>
+    </div>
+    <!-- end site brand	 -->
+    <div class="side-nav-panel-right">
+        <a href="contact.html" class="side-nav-right"></a>
+    </div>
+</div>
+<!-- end navbar top -->
+
+<!-- side nav left-->
+<div class="side-nav-panel-left">
+    <ul id="slide-out-left" class="side-nav side-nav-panel collapsible">
+        <li class="profil">
+              {% if user.is_authenticated %}
+            <img src="/{{ user.users.headers }}" alt="">
+             <h2>{{ user.username }}</h2>
+            <h6>愿若常安好，城南花已开</h6>
+             {% else %}
+            <img src="Hyblog/blog/static/blog/img/profile.jpg" alt="">
+             <h2>城南花已开</h2>
+            <h6>愿若常安好，城南花已开</h6>
+              {% endif %}
+        </li>
+        <li><a href="{% url 'blog:index' %}"><i class="fa fa-home"></i>主页</a></li>
+        <li>
+            <div class="collapsible-header"><i class="fa fa-bold"></i>博客<span><i class="fa fa-caret-down"></i></span>
+            </div>
+            <div class="collapsible-body">
+                <ul class="side-nav-panel">
+                    <li><a href="{% url 'blog:article_list' %}">博客列表</a></li>
+                    <li><a href="{% url 'blog:article_add' %}">写博客</a></li>
+                </ul>
+            </div>
+        </li>
+        <li>
+            <div class="collapsible-header"><i class="fa fa-file-o"></i>操作<span><i class="fa fa-caret-down"></i></span>
+            </div>
+            {% if user.is_authenticated %}
+            <!-- 如果用户已经登录，则显示用户名下拉框 -->
+            <div class="collapsible-body">
+                <ul class="side-nav-panel">
+                    <li><a href="{% url 'blog:user_list' %}"> {{ user.username }}</a></li>
+                    <li><a href="{% url 'blog:user_logout' %}">退出</a></li>
+                </ul>
+            </div>
+            <!-- 如果用户未登录，则显示 “登录” -->
+            {% else %}
+        <li><a href="{% url 'blog:user_login' %}"><i class="fa fa-sign-in"></i>登录</a></li>
+        {% endif %}
+        </li>
+        <li><a href="/blog/register/"><i class="fa fa-user-plus"></i>注册</a></li>
+    </ul>
+</div>
+<!-- end side nav left-->
+
+
+<!-- register -->
+<div class="pages section">
+    <div class="container">
+        <div class="pages-head">
+        </div>
+        <div class="register">
+            <div class="row">
+                <form class="form-horizontal"  method="post" action="{% url 'blog:user_update' %}">
+                    {% csrf_token %}
+                     <input type="hidden" class="form-control" name="id" id="id" value="{{user.id}}">
+
+                    <div class="form-group">
+                        <label for="username"  class="col-sm-2 control-label">用户姓名</label>
+                        <div class="col-sm-10">
+                            <input type="text" disabled required class="form-control" name="username" id="username"
+                                   value="{{user.username}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="nickname"  class="col-sm-2 control-label">用户昵称</label>
+                        <div class="col-sm-10">
+                            <input type="text" required class="form-control" name="nickname" id="nickname"
+                                   value="{{user.users.nickname}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="gender" class="col-sm-2 control-label">用户性别</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="gender" id="gender"
+                                   value="{{user.users.gender}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="age" class="col-sm-2 control-label">用户年龄</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="age" id="age" value="{{user.users.age}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-default">提交</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end register -->
+
+<p style="height:120px"></p>
+
+
+<!-- loader -->
+<div id="fakeLoader"></div>
+<!-- end loader -->
+
+<!-- footer -->
+<div class="footer">
+    <div class="container">
+        <div class="about-us-foot">
+            <h6>MAUDE</h6>
+            <p>is a lorem ipsum dolor sit amet, consectetur adipisicing elit consectetur adipisicing elit.</p>
+        </div>
+        <div class="social-media">
+            <a href=""><i class="fa fa-facebook"></i></a>
+            <a href=""><i class="fa fa-twitter"></i></a>
+            <a href=""><i class="fa fa-google"></i></a>
+            <a href=""><i class="fa fa-linkedin"></i></a>
+            <a href=""><i class="fa fa-instagram"></i></a>
+        </div>
+        <div class="copyright">
+            <span>© 2018 All Right Reserved</span>
+        </div>
+    </div>
+</div>
+<!-- end footer -->
+
+<!-- scripts -->
+
+
+<script src="/static/blog/js/jquery.min.js"></script>
+<script src="/static/blog/js/materialize.min.js"></script>
+<script src="/static/blog/js/owl.carousel.min.js"></script>
+<script src="/static/blog/js/fakeLoader.min.js"></script>
+<script src="/static/blog/js/main.js"></script>
+
+
+</body>
+</html>
