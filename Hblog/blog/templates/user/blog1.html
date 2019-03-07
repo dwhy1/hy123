@@ -32,7 +32,7 @@
     </div>
     <!-- site brand	 -->
     <div class="site-brand">
-        <a href=""><h1>博客列表</h1></a>
+        <a href=""><h1>博客详情</h1></a>
     </div>
     <!-- end site brand	 -->
     <div class="side-nav-panel-right">
@@ -91,51 +91,63 @@
 <div class="pages section">
     <div class="container">
         <div class="blog">
-            {% for i in articles %}
             <div class="row">
                 <div class="col s12">
                     <div class="blog-content">
                         <div class="blog-detailt">
-                            <h5><a href="/blog/article_detail/{{i.id}}">{{i.title}}</a></h5>
-                            <div class="date">
-                                <span>上传时间</span>
-                                <span><i class="fa fa-calendar"></i>{{i.starTime}}</span><br>
-                                <span>修改时间</span>
-                                <span><i class="fa fa-calendar"></i>{{i.updateTime}}</span>
+                            <div class="jumbotron">
+                                <h3>{{ article.title}}</h3><br>
+                                <span>上传时间 <a href=""></a><i class="fa fa-calendar"></i>{{ article.starTime}}</span><br>
+                                <span>修改时间 <a href=""></a><i
+                                        class="fa fa-calendar"></i>{{ article.updateTime}}</span><br>
+                                <span></span>
+                                <p>{{article.content}}</p>
                             </div>
-                            <p>{{i.content}}</p>
-                            <img src="/{{ user.users.headers }}"
+                            <img src="/{{ article.author.users.headers }}"
                                  style="height: 130px;width: 130px; float:right ;bottom: 18px; position: relative;"
                                  alt="找不到" class="img-rounded"><br>
-                            <div class="button-default">作者 <span>  :</span> {{ user.username }}</div>
+                            <div class="button-default">作者 <span>  :</span> {{ article.author.username}}</div>
                         </div>
-                        <a href="/blog/article_update/{{i.id}}" class="btn btn-warning">修改</a>
-                        <a href="/blog/article_delete/{{i.id}}" class="btn btn-warning">删除</a>
-                    </div>
-                </div>
-            </div>
-            {% empty %}
-            <div class="btn btn-warning" >对不起当前没有文章，<a href="{% url 'blog:article_add' %}">请发表博客</a></div>
-            {% endfor %}
-            <div class="row">
-                <div class="col s12">
-                    <div class="pagination-blog">
-                        <ul>
-
-                            <a href="/blog/article_list/?pagenum=1">首页</a>
-
-                            {% if articles.has_previous %}
-                            <a href="/blog/article_list/?pagenum={{articles.previous_page_number}}">上一页</a>
+                        <div class="blog-detailt">
+                            {% if user.is_authenticated %}
+                            <div>
+                                <form action="{% url 'comments:post_comment' article.id %}" method="POST">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <label for="body">
+                                            <strong>
+                                                我也要发言：
+                                            </strong>
+                                        </label>
+                                        <textarea type="text" class="form-control" id="body" name="body"
+                                                  rows="2"></textarea>
+                                    </div>
+                                    <!-- 提交按钮 -->
+                                    <button type="submit" class="btn btn-primary ">发送</button>
+                                </form>
+                            </div>
+                            <br>
+                            {% else %}
+                            <br>
+                            <h5 class="row justify-content-center">
+                                请<a href="{% url 'userprofile:login' %}">登录</a>后回复
+                            </h5>
+                            <br>
                             {% endif %}
-                            {% for i in pagin1.page_range %}
-                            <a href="/blog/article_list/?pagenum={{i}}">
-                                <li>{{i}}</li>
-                            </a>
-                            {% endfor %}
-                            {% if articles.has_next %}
-                            <a href="/blog/article_list/?pagenum={{articles.next_page_number}}">下一页</a>
-                            {% endif %}
-                        </ul>
+                            <!-- 显示评论 -->
+                            <h4>共有{{ comments.count }}条评论</h4>
+                            <div>
+                                {% for comment in comments %}
+                                <hr>
+                                <p>
+                                <img src="/{{ comment.user.users.headers }}" style="height: 60px;width: 60px;float:left ;top: 20px; position: relative;" alt="找不到" class="img-rounded"><br>
+                                    <strong style="color: pink">{{ comment.user }}</strong> 于
+                                    <span style="color: green">{{ comment.created|date:"Y-m-d H:i:s" }}</span> 时评论：
+                                </p>
+                                <pre style="font-family: inherit; font-size: 1em;">{{ comment.body }}</pre>
+                                {% endfor %}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

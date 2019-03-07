@@ -8,6 +8,11 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-touch-fullscreen" content="yes">
     <meta name="HandheldFriendly" content="True">
+
+    <link rel="stylesheet" href="/static/blog/iconfonts1/iconfont/iconfont.css">
+
+    <link rel="stylesheet" href="/static/blog/iconfonts1/iconfont02/iconfont.css">
+    <link rel="stylesheet" href="/static/blog/iconfonts1/iconfont03/iconfont.css">
     <link type="text/css" rel="stylesheet" href="/static/blog/css/bootstrap.css">
     <script type="text/javascript" src="/static/blog/js/bootstrap.js"></script>
     <script type="text/javascript" src="/static/blog/js/jquery-2.1.4.js"></script>
@@ -32,7 +37,7 @@
     </div>
     <!-- site brand	 -->
     <div class="site-brand">
-        <a href=""><h1>博客列表</h1></a>
+        <a href=""><h1>博客主页</h1></a>
     </div>
     <!-- end site brand	 -->
     <div class="side-nav-panel-right">
@@ -57,6 +62,7 @@
         </li>
         <li><a href="{% url 'blog:index' %}"><i class="fa fa-home"></i>主页</a></li>
         <li>
+            {% if user.is_authenticated %}
             <div class="collapsible-header"><i class="fa fa-bold"></i>博客<span><i class="fa fa-caret-down"></i></span>
             </div>
             <div class="collapsible-body">
@@ -65,11 +71,15 @@
                     <li><a href="{% url 'blog:article_add' %}">写博客</a></li>
                 </ul>
             </div>
+            {% else %}
+        <li><a href="{% url 'blog:user_login' %}" onclick="return window.confirm('您还没有注册登录，请先去登录')"><i
+                class="fa fa-sign-in"></i>博客</a></li>
+        {% endif %}
         </li>
         <li>
+            {% if user.is_authenticated %}
             <div class="collapsible-header"><i class="fa fa-file-o"></i>操作<span><i class="fa fa-caret-down"></i></span>
             </div>
-            {% if user.is_authenticated %}
             <!-- 如果用户已经登录，则显示用户名下拉框 -->
             <div class="collapsible-body">
                 <ul class="side-nav-panel">
@@ -96,7 +106,12 @@
                 <div class="col s12">
                     <div class="blog-content">
                         <div class="blog-detailt">
-                            <h5><a href="/blog/article_detail/{{i.id}}">{{i.title}}</a></h5>
+                            {% if user.is_authenticated %}
+                            <h5><a href="/blog/detail/{{i.id}}">{{i.title}}</a></h5>
+                            {% else %}
+                            <h5><a href="{% url 'blog:user_login' %}" onclick="return window.confirm('您还没有注册登录，请先去登录')">{{i.title}}</a>
+                            </h5>
+                            {% endif %}
                             <div class="date">
                                 <span>上传时间</span>
                                 <span><i class="fa fa-calendar"></i>{{i.starTime}}</span><br>
@@ -104,36 +119,42 @@
                                 <span><i class="fa fa-calendar"></i>{{i.updateTime}}</span>
                             </div>
                             <p>{{i.content}}</p>
-                            <img src="/{{ user.users.headers }}"
-                                 style="height: 130px;width: 130px; float:right ;bottom: 18px; position: relative;"
+
+
+                            <img src="/{{ i.author.users.headers }}"
+                                 style="height: 130px;width: 130px;float:right ;bottom: 30px; position: relative;"
                                  alt="找不到" class="img-rounded"><br>
-                            <div class="button-default">作者 <span>  :</span> {{ user.username }}</div>
+                            <span style="height: 74px;width: 27px;"></span>
+                            <div>
+                                <span class="iconfont  iconwode"> 作者: {{i.author.username}}</span>
+                            </div>
+                            <div><span class="iconfont iconxiaoxi"> 评论数: {{i.comments.count}}</span>
+                                <span>    </span>
+                                <span class="iconfont iconicon_likegood"> 点赞数: {{i.comments.count}}</span></div>
+                            <div></div>
                         </div>
-                        <a href="/blog/article_update/{{i.id}}" class="btn btn-warning">修改</a>
-                        <a href="/blog/article_delete/{{i.id}}" class="btn btn-warning">删除</a>
                     </div>
                 </div>
             </div>
             {% empty %}
-            <div class="btn btn-warning" >对不起当前没有文章，<a href="{% url 'blog:article_add' %}">请发表博客</a></div>
+            <a href="{% url 'blog:article_add' %}" class="btn btn-warning"
+               onclick="return window.confirm('您还没有写博客，去写博客？')">写博客</a>
             {% endfor %}
             <div class="row">
                 <div class="col s12">
                     <div class="pagination-blog">
                         <ul>
-
-                            <a href="/blog/article_list/?pagenum=1">首页</a>
-
+                            <a href="/blog/index/?pagenum=1">首页</a>
                             {% if articles.has_previous %}
-                            <a href="/blog/article_list/?pagenum={{articles.previous_page_number}}">上一页</a>
+                            <a href="/blog/index/?pagenum={{articles.previous_page_number}}">上一页</a>
                             {% endif %}
                             {% for i in pagin1.page_range %}
-                            <a href="/blog/article_list/?pagenum={{i}}">
+                            <a href="/blog/index/?pagenum={{i}}">
                                 <li>{{i}}</li>
                             </a>
                             {% endfor %}
                             {% if articles.has_next %}
-                            <a href="/blog/article_list/?pagenum={{articles.next_page_number}}">下一页</a>
+                            <a href="/blog/index/?pagenum={{articles.next_page_number}}">下一页</a>
                             {% endif %}
                         </ul>
                     </div>

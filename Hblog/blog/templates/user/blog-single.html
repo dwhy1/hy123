@@ -61,7 +61,7 @@
             </div>
             <div class="collapsible-body">
                 <ul class="side-nav-panel">
-                    <li><a href="{% url 'blog:article_list' %}">博客列表</a></li>
+                    <li><a href="{% url 'blog:article_list' %}">个人博客</a></li>
                     <li><a href="{% url 'blog:article_add' %}">写博客</a></li>
                 </ul>
             </div>
@@ -73,7 +73,8 @@
             <!-- 如果用户已经登录，则显示用户名下拉框 -->
             <div class="collapsible-body">
                 <ul class="side-nav-panel">
-                    <li><a href="{% url 'blog:user_list'    %}">个人中心</a></li>
+                    <li><a href="{% url 'blog:user_list' %}">个人中心</a></li>
+                    <li><a href="{% url 'blog:user_pass' %}">修改密码</a></li>
                     <li><a href="{% url 'blog:user_logout' %}">退出</a></li>
                 </ul>
             </div>

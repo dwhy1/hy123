@@ -47,13 +47,13 @@
         <li class="profil">
             {% if user.is_authenticated %}
             <img src="/{{ user.users.headers }}" alt="">
-             <h2>{{ user.username }}</h2>
+            <h2>{{ user.username }}</h2>
             <h6>愿若常安好，城南花已开</h6>
-             {% else %}
+            {% else %}
             <img src="/{{ user.users.headers }}" alt="">
-             <h2>城南花已开</h2>
+            <h2>城南花已开</h2>
             <h6>愿若常安好，城南花已开</h6>
-              {% endif %}
+            {% endif %}
         </li>
         <li><a href="{% url 'blog:index' %}"><i class="fa fa-home"></i>主页</a></li>
         <li>
@@ -61,7 +61,7 @@
             </div>
             <div class="collapsible-body">
                 <ul class="side-nav-panel">
-                    <li><a href="{% url 'blog:article_list' %}">博客列表</a></li>
+                    <li><a href="{% url 'blog:article_list' %}">个人博客</a></li>
                     <li><a href="{% url 'blog:article_add' %}">写博客</a></li>
                 </ul>
             </div>
@@ -74,6 +74,7 @@
             <div class="collapsible-body">
                 <ul class="side-nav-panel">
                     <li><a href="{% url 'blog:user_list'  %}">个人中心</a></li>
+                    <li><a href="{% url 'blog:user_pass' %}">修改密码</a></li>
                     <li><a href="{% url 'blog:user_logout' %}">退出</a></li>
                 </ul>
             </div>
@@ -94,52 +95,39 @@
         <div class="pages-head">
         </div>
         <div class="register">
-            <div class="row">
-                {{msg}}
-                 <table class="table table-hover">
+
+                <div class="row">
+                    <div class="col-md-4"><img src="/{{ user.users.headers }}" style="height: 160px;width: 160px; float:right ;top: 5px; position: relative;" alt="找不到" class="img-rounded"><br>
+</div>
+                    <div class="col-md-8"><table class="table table-striped">
                     <thead>
                     <tr>
-                        <td>用户姓名</td>
-                        <td>用户昵称</td>
-                        <td>用户性别</td>
-                        <td>用户年龄</td>
-                        <td>用户操作</td>
+                        <td><h3>用户姓名：{{user.username}}</h3></td>
+                    </tr>
+                      <tr>
+                        <td><h3>用户昵称：{{user.users.nickname}}</h3></td>
+                    </tr>
+                      <tr>
+                        <td><h3>用户年龄：{{user.users.age}}</h3></td>
+                    </tr>
+                      <tr>
+                        <td><h3>用户性别：{{user.users.gender}}</h3></td>
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
-                        <td>{{user.username}}</td>
-                        <td>{{user.users.nickname}}</td>
-                        <td>{{user.users.gender}}</td>
-                        <td>{{user.users.age}}</td>
-                        <td>
-                            <a class="btn btn-xs btn-primary" onclick="return window.confirm('你确定要修改吗？')"  href="/blog/user_update/?id={{user.id}}">用户修改</a>
+                        <td><a class="btn btn-xs btn-primary" onclick="return window.confirm('你确定要修改吗？')" href="/blog/user_update/?id={{user.id}}">用户修改</a>
+                        </td>
                     </tr>
                     </tbody>
-                </table>
-            </div>
+                </table></div>
+                </div>
+                {{msg}}
         </div>
     </div>
 </div>
 <!-- end register -->
 <p style="height:120px"></p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <!-- loader -->

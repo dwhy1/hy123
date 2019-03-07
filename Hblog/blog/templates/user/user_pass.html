@@ -32,7 +32,7 @@
     </div>
     <!-- site brand	 -->
     <div class="site-brand">
-        <a href=""><h1>博客列表</h1></a>
+        <a href="{% url 'blog:index' %}"><h1>修改密码</h1></a>
     </div>
     <!-- end site brand	 -->
     <div class="side-nav-panel-right">
@@ -45,15 +45,15 @@
 <div class="side-nav-panel-left">
     <ul id="slide-out-left" class="side-nav side-nav-panel collapsible">
         <li class="profil">
-            {% if user.is_authenticated %}
+              {% if user.is_authenticated %}
             <img src="/{{ user.users.headers }}" alt="">
-            <h2>{{ user.username }}</h2>
+             <h2>{{ user.username }}</h2>
             <h6>愿若常安好，城南花已开</h6>
-            {% else %}
+             {% else %}
             <img src="Hyblog/blog/static/blog/img/profile.jpg" alt="">
-            <h2>城南花已开</h2>
+             <h2>城南花已开</h2>
             <h6>愿若常安好，城南花已开</h6>
-            {% endif %}
+              {% endif %}
         </li>
         <li><a href="{% url 'blog:index' %}"><i class="fa fa-home"></i>主页</a></li>
         <li>
@@ -75,7 +75,7 @@
                 <ul class="side-nav-panel">
                     <li><a href="{% url 'blog:user_list' %}">个人中心</a></li>
                     <li><a href="{% url 'blog:user_pass' %}">修改密码</a></li>
-                    <li><a href="{% url 'blog:user_logout'%}">退出</a></li>
+                    <li><a href="{% url 'blog:user_logout' %}">退出</a></li>
                 </ul>
             </div>
             <!-- 如果用户未登录，则显示 “登录” -->
@@ -87,65 +87,59 @@
     </ul>
 </div>
 <!-- end side nav left-->
-<!-- blog -->
+
+
+<!-- register -->
 <div class="pages section">
     <div class="container">
-        <div class="blog">
-            {% for i in articles %}
+        <div class="pages-head">
+        </div>
+        <div class="register">
             <div class="row">
-                <div class="col s12">
-                    <div class="blog-content">
-                        <div class="blog-detailt">
-                            <h5><a href="/blog/article_detail/{{i.id}}">{{i.title}}</a></h5>
-                            <div class="date">
-                                <span>上传时间</span>
-                                <span><i class="fa fa-calendar"></i>{{i.starTime}}</span><br>
-                                <span>修改时间</span>
-                                <span><i class="fa fa-calendar"></i>{{i.updateTime}}</span>
-                            </div>
-                            <p>{{i.content}}</p>
-                            <img src="/{{ user.users.headers }}"
-                                 style="height: 130px;width: 130px; float:right ;bottom: 18px; position: relative;"
-                                 alt="找不到" class="img-rounded"><br>
-                            <div class="button-default">作者 <span>  :</span> {{ user.username }}</div>
+                <form class="form-horizontal"  method="post" action="{% url 'blog:user_pass' %}"  enctype="multipart/form-data" >
+                    {% csrf_token %}
+                      {{mag}}
+                     <input type="hidden" class="form-control" name="id" id="id" value="{{user.id}}">
+                    <div class="form-group">
+                        <label for="username"  class="col-sm-2 control-label">用户姓名</label>
+                        <div class="col-sm-10">
+                            <input type="text" disabled required class="form-control" name="username" id="username"
+                                   value="{{user.username}}">
                         </div>
-                        <a href="/blog/article_update/{{i.id}}" class="btn btn-warning">修改</a>
-                        <a href="/blog/article_delete/{{i.id}}" class="btn btn-warning">删除</a>
                     </div>
-                </div>
-            </div>
-            {% empty %}
-            <div class="btn btn-warning" >对不起当前没有文章，<a href="{% url 'blog:article_add' %}">请发表博客</a></div>
-            {% endfor %}
-            <div class="row">
-                <div class="col s12">
-                    <div class="pagination-blog">
-                        <ul>
-
-                            <a href="/blog/article_list/?pagenum=1">首页</a>
-
-                            {% if articles.has_previous %}
-                            <a href="/blog/article_list/?pagenum={{articles.previous_page_number}}">上一页</a>
-                            {% endif %}
-                            {% for i in pagin1.page_range %}
-                            <a href="/blog/article_list/?pagenum={{i}}">
-                                <li>{{i}}</li>
-                            </a>
-                            {% endfor %}
-                            {% if articles.has_next %}
-                            <a href="/blog/article_list/?pagenum={{articles.next_page_number}}">下一页</a>
-                            {% endif %}
-                        </ul>
+                    <div class="form-group">
+                        <label for="password" class="col-sm-2 control-label">用户原密码</label>
+                        <div class="col-sm-10">
+                            <input type="password" class="form-control" name="oldpassword" id="password"
+                                   value="">
+                        </div>
                     </div>
-                </div>
+                    <div class="form-group">
+                       <label for="password" class="col-sm-2 control-label">用户新密码</label>
+                        <div class="col-sm-10">
+                            <input type="password" class="form-control" name="password" id="password'"
+                                   value="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                       <label for="confirmpwd" class="col-sm-2 control-label">确认密码</label>
+                        <div class="col-sm-10">
+                            <input type="password" class="form-control" name="confirmpwd" id="confirmpwd" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-default">提交</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 </div>
-<!-- end blog -->
+<!-- end register -->
 
-
-<p style="height:200px"></p>
+<p style="height:120px"></p>
 
 
 <!-- loader -->

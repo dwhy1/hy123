@@ -61,7 +61,7 @@
             <div class="collapsible-body">
                 <ul class="side-nav-panel">
                      {% if user.is_authenticated %}
-                     <li><a href="{% url 'blog:article_list' %}">博客列表</a></li>
+                     <li><a href="{% url 'blog:article_list' %}">个人博客</a></li>
                     <li><a href="{% url 'blog:article_add' %}">写博客</a></li>
                      {% else %}
                     <li><a href="" onclick="return window.confirm('你还没有登录请先登录')">博客列表</a></li>

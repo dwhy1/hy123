@@ -62,7 +62,7 @@
             <div class="collapsible-body">
                 <ul class="side-nav-panel">
                      {% if user.is_authenticated %}
-                     <li><a href="{% url 'blog:article_list' %}">博客列表</a></li>
+                     <li><a href="{% url 'blog:article_list' %}">个人博客</a></li>
                     <li><a href="{% url 'blog:article_add' %}">写博客</a></li>
                      {% else %}
                     <li><a href="" onclick="return window.confirm('你还没有登录请先登录')">博客列表</a></li>
@@ -98,7 +98,7 @@
                     </div>
                     <div class="input-field">
                          <input type="text"  placeholder="请上传头像" name='nuba' disabled >
-                        <input type="file"  name='touxiang' style="width: 400px;" id= 'touxiang' class="validate" placeholder="请输入昵称">
+                        <input type="file"  name='touxiang' style="width: 400px;" id= 'touxiang' class="validate" placeholder="请输入头像">
                     </div>
                      <div class="input-field">
                         <input type="text"name= 'age' id= 'age' placeholder="请输入年龄" class="validate" required>
