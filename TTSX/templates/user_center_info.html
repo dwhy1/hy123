@@ -1,0 +1,49 @@
+{% extends 'base_user_center.html' %}
+{% block right_content %}
+		<div class="right_content clearfix">
+				<div class="info_con clearfix">
+				<h3 class="common_title2">基本信息</h3>
+						<ul class="user_info_list" style="height: 300px;">
+							<li><span>用户账号：</span>{{ user.username }}</li>
+                             {% if  user.userinfo.nickname %}
+                              <li><span>用户昵称：</span>{{ user.userinfo.nickname}}</li>
+                              <li>
+                               <img src="/{{user.userinfo.headers}}" alt="用户头像" class="img-rounded"
+                                     width="130px" height="130px" style="float:right ;bottom: 60px; position: relative;margin-right: 540px;">
+                              </li>
+                              <li><span>用户性别：</span>{{ user.userinfo.gender }}</li>
+                              <li><span>用户年龄：</span>{{ user.userinfo.age }} 岁</li>
+                              <li><span>用户邮箱：</span>{{ user.email }}</li>
+                              <li><span>注册时间：</span>{{ user.date_joined}}</li>
+                            {% else %}
+                            <li><a href="{% url 'user:user_add' %}" onclick="return window.confirm('您还没有完善信息，请先去完善信息')">完善信息</a></li>
+                            {% endif %}
+                            {% if address %}
+                                <li><span>联系方式：</span>{{ address.phone }}</li>
+                                <li><span>联系地址：</span>{{ address.addr }}</li>
+                            {% else %}
+                                <li><span>联系方式：</span>无默认</li>
+							    <li><span>联系地址：</span>无默认</li>
+                            {% endif %}
+						</ul>
+				</div>
+				<h3 class="common_title2">最近浏览</h3>
+				<div class="has_view_list">
+					<ul class="goods_type_list clearfix">
+                        {% for goods in goods_li %}
+				        <li>
+                            <a href="{% url 'goods:detail' goods.id %}"><img src="/{{ goods.image.url }}"></a>
+                            <h4><a href="{% url 'goods:detail' goods.id %}">{{ goods.name }}</a></h4>
+                            <div class="operate">
+                                <span class="prize">￥{{ goods.price }}</span>
+                                <span class="unit">{{ goods.price }}/{{ goods.unite }}</span>
+                                <a href="#" class="add_goods" title="加入购物车"></a>
+                            </div>
+                        </li>
+                        {% empty %}
+                            无历史浏览记录
+                        {% endfor %}
+			        </ul>
+		        </div>
+		</div>
+{% endblock right_content %}

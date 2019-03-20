@@ -1,0 +1,77 @@
+{% extends 'base_user_center.html' %}
+{% block right_content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-7 col-md-offset-2">
+            <form action="{% url 'goods:update_goods' goods.id %}" name="formMobile" id="formMobile"
+                  style="display:block" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <ul class="">
+                    <li>
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">商品名称</button>
+                            </span>
+                            <input id='name' type="text" class="form-control"
+                                   style="width: 300px;" value="{{goods.name}}" name="name"/>
+                        </div>
+                    </li>
+                    <li style="margin-top: 20px">
+                         <div class="input-group">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">商品介绍</button>
+                            </span>
+                            <input id='desc' type="text" class="form-control"
+                                   style="width: 300px;"  value="{{goods.desc}}"  name="desc"/>
+                        </div>
+                    </li>
+                    <li style="margin-top: 20px">
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">商品库存</button>
+                            </span>
+                            <input id='stock' type="text" class="form-control"
+                                   style="width: 300px;"  value="{{goods.stock}}"     name="stock"/>
+                        </div>
+                    </li>
+                    <li style="margin-top: 20px">
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">商品价格</button>
+                            </span>
+                            <input id='price' type="text" class="form-control"
+                                   style="width: 300px;"  value="{{goods.price}}"     name="price"/>
+                        </div>
+                    </li>
+                    <li style="margin-top: 20px">
+                        <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">商品图片</button>
+                            </span><br>
+                        <input type="file" name="cover" multiple="multiple"/>
+                    </li>
+                    <li style="margin-top: 20px">
+                        {% if goods.status == 1 %}
+                      <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">商品状态</button>
+                            </span><br>
+                        <input type="radio" name="status" value="1" checked>上架
+                        <input type="radio" name="status" value="0">下架
+                        {% elif goods.status == 0 %}
+                        <div class="register-list-name">商品状态：</div>
+                        <input type="radio" name="status" value="1">上架
+                        <input type="radio" name="status" value="0" checked>下架
+                        {% endif %}
+                    </li>
+                    <br>
+                    <li>
+                        <input class="btn btn-default" type="submit" value="提交数据">
+                    </li>
+                </ul>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+
+{% endblock right_content %}

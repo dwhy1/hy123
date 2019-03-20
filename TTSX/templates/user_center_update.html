@@ -1,0 +1,45 @@
+{% extends 'base_user_center.html' %}
+{% load staticfiles %}
+{% block right_content %}
+<div class="right_content clearfix">
+    <h3 class="common_title2">收货地址</h3>
+    <div class="site_con">
+        <dl>
+            <dt>当前地址：</dt>
+            {{msg}}
+            <form action="{% url 'user:addr_update'  %}" method="post">
+                {% csrf_token %}
+                {% for i in addr_list %}
+                {% if i.is_default == 1 %}
+                默认地址：<input type="radio" name='addr_default' value="{{i.id}}" checked><span> {{ i.addr }} | {{ i.intro }} |　（{{ i.receiver }}
+                收）　｜ {{ i.phone }} |<a
+                        href="{% url 'user:addr_del' i.id %}" onclick="return confirm('确认删除吗？')">删除</a> |
+             <input type="submit" value="确定"></span><br><br>
+                {% else %}
+                设为默认：<input type="radio" name='addr_default' value="{{i.id}}"><span>{{ i.addr }} | {{ i.intro }} |　（{{ i.receiver }}收）　｜ {{ i.phone }} |<a
+                    href="{% url 'user:addr_del' i.id %}" onclick="return confirm('确认删除吗？')">删除</a> |
+             <input type="submit" value="确定"></span><br><br>
+                {% endif %}
+                {% empty %}
+                <p>没有地址，快去添加吧！！</p>
+                {% endfor %}
+            </form>
+        </dl>
+    </div>
+
+
+    <style type="text/css">
+    .vad { margin: 250px 0 5px; font-family: Consolas,arial,宋体,sans-serif; text-align:center;}
+    .vad a { display: inline-block; height: 36px; line-height: 36px; margin: 0 5px; padding: 0 50px; font-size: 14px; text-align:center; color:#eee; text-decoration: none; background-color: #222;}
+    .vad a:hover { color: #fff; background-color: #000;}
+    .thead { width: 728px; height: 90px; margin: 0 auto; border-bottom: 40px solid #fff;}
+
+
+
+
+
+    </style>
+
+
+</div>
+{% endblock right_content %}

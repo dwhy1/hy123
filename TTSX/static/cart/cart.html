@@ -1,0 +1,235 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>天天生鲜-购物车</title>
+	<link rel="stylesheet" type="text/css" href="../css/reset.css">
+	<link rel="stylesheet" type="text/css" href="../css/main.css">
+	 <link rel="stylesheet" type="text/css" href="../res/static/css/main.css">
+	<link rel="stylesheet" type="text/css" href="../res/layui/css/layui.css">
+	<script type="text/javascript" src="../res/layui/layui.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+</head>
+<body>
+	<div class="header_con">
+		<div class="header">
+			<div class="welcome fl">欢迎来到天天生鲜!</div>
+			<div class="fr">
+				<div class="login_info fl">
+					欢迎您：<em>张 山</em>
+				</div>
+				<div class="login_btn fl">
+					<a href="login.html">登录</a>
+					<span>|</span>
+					<a href="register.html">注册</a>
+				</div>
+				<div class="user_link fl">
+					<span>|</span>
+					<a href="user_center_info.html">用户中心</a>
+					<span>|</span>
+					<a href="cart.html">我的购物车</a>
+					<span>|</span>
+					<a href="user_center_order.html">我的订单</a>
+				</div>
+			</div>
+		</div>		
+	</div>
+	<div class="search_bar clearfix">
+		<a href="index.html" class="logo fl"><img src="../images/logo.png"></a>
+		<div class="sub_page_name fl">|&nbsp;&nbsp;&nbsp;&nbsp;购物车</div>
+		<div class="search_con fr">
+			<input type="text" class="input_text fl" name="" placeholder="搜索商品">
+			<input type="button" class="input_btn fr" name="" value="搜索">
+		</div>		
+	</div>
+	<div class="total_count">全部商品<em>2</em>件</div>	
+	  <div class="content content-nav-base shopcart-content">
+	    <div class="cart w1200">
+	      <div class="cart-table-th">
+	        <div class="th th-chk">
+	          <div class="select-all">
+	            <div class="cart-checkbox">
+	              <input class="check-all check" id="allCheckked" type="checkbox" value="true">
+	            </div>
+	          <label>&nbsp;&nbsp;全选</label>
+	          </div>
+	        </div>
+	        <div class="th th-item">
+	          <div class="th-inner">
+	            商品
+	          </div>
+	        </div>
+	        <div class="th th-price">
+	          <div class="th-inner">
+	            单价
+	          </div>
+	        </div>
+	        <div class="th th-amount">
+	          <div class="th-inner">
+	            数量
+	          </div>
+	        </div>
+	        <div class="th th-sum">
+	          <div class="th-inner">
+	            小计
+	          </div>
+	        </div>
+	        <div class="th th-op">
+	          <div class="th-inner">
+	            操作
+	          </div>
+	        </div>  
+	      </div>
+	      <div class="OrderList">
+	        <div class="order-content" id="list-cont">
+	          <ul class="item-content layui-clear">
+	            <li class="th th-chk">
+	              <div class="select-all">
+	                <div class="cart-checkbox">
+	                  <input class="CheckBoxShop check" id="" type="checkbox" num="all" name="select-all" value="true">
+	                </div>
+	              </div>
+	            </li>
+	            <li class="th th-item">
+	              <div class="item-cont">
+	                <a href="javascript:;"><img src="" alt=""></a>
+	                <div class="text">
+	                  <div class="title">宝宝T恤棉质小衫</div>
+	                  <p><span>粉色</span>  <span>130</span>cm</p>
+	                </div>
+	              </div>
+	            </li>
+	            <li class="th th-price">
+	              <span class="th-su">189.00</span>
+	            </li>
+	            <li class="th th-amount">
+	              <div class="box-btn layui-clear">
+	                <div class="less layui-btn">-</div>
+	                <input class="Quantity-input" type="" name="" value="1" disabled="disabled">
+	                <div class="add layui-btn">+</div>
+	              </div>
+	            </li>
+	            <li class="th th-sum">
+	              <span class="sum">189.00</span>
+	            </li>
+	            <li class="th th-op">
+	              <span class="dele-btn">删除</span>
+	            </li>
+	          </ul>
+	          <ul class="item-content layui-clear">
+	            <li class="th th-chk">
+	              <div class="select-all">
+	                <div class="cart-checkbox">
+	                  <input class="CheckBoxShop check" id="" type="checkbox" num="all" name="select-all" value="true">
+	                </div>
+	              </div>
+	            </li>
+	            <li class="th th-item">
+	              <div class="item-cont">
+	                <a href="javascript:;"><img src="" alt=""></a>
+	                <div class="text">
+	                  <div class="title">宝宝T恤棉质小衫</div>
+	                  <p><span>粉色</span>  <span>130</span>cm</p>
+	                </div>
+	              </div>
+	            </li>
+	            <li class="th th-price">
+	              <span class="th-su">189.00</span>
+	            </li>
+	            <li class="th th-amount">
+	              <div class="box-btn layui-clear">
+	                <div class="less layui-btn">-</div>
+	                <input class="Quantity-input" type="" name="" value="1" disabled="disabled">
+	                <div class="add layui-btn">+</div>
+	              </div>
+	            </li>
+	            <li class="th th-sum">
+	              <span class="sum">189.00</span>
+	            </li>
+	            <li class="th th-op">
+	              <span class="dele-btn">删除</span>
+	            </li>
+	          </ul>
+	          <ul class="item-content layui-clear">
+	            <li class="th th-chk">
+	              <div class="select-all">
+	                <div class="cart-checkbox">
+	                  <input class="CheckBoxShop check" id="" type="checkbox" num="all" name="select-all" value="true">
+	                </div>
+	              </div>
+	            </li>
+	            <li class="th th-item">
+	              <div class="item-cont">
+	                <a href="javascript:;"><img src="" alt=""></a>
+	                <div class="text">
+	                  <div class="title">宝宝T恤棉质小衫</div>
+	                  <p><span>粉色</span>  <span>130</span>cm</p>
+	                </div>
+	              </div>
+	            </li>
+	            <li class="th th-price">
+	              <span class="th-su">189.00</span>
+	            </li>
+	            <li class="th th-amount">
+	              <div class="box-btn layui-clear">
+	                <div class="less layui-btn">-</div>
+	                <input class="Quantity-input" type="" name="" value="1" disabled="disabled">
+	                <div class="add layui-btn">+</div>
+	              </div>
+	            </li>
+	            <li class="th th-sum">
+	              <span class="sum">189.00</span>
+	            </li>
+	            <li class="th th-op">
+	              <span class="dele-btn">删除</span>
+	            </li>
+	          </ul>
+	        </div>
+	      </div>
+	      <div class="FloatBarHolder layui-clear">
+	        <div class="th th-chk">
+	          <div class="select-all">
+	            <div class="cart-checkbox">
+	              <input class="check-all check" id="" name="select-all" type="checkbox"  value="true">
+	            </div>
+	            <label>&nbsp;&nbsp;已选<span class="Selected-pieces">0</span>件</label>
+	          </div>
+	        </div>
+	        <div class="th batch-deletion">
+	          <span class="batch-dele-btn">批量删除</span>
+	        </div>
+	        <div class="th Settlement">
+	          <button class="layui-btn"><a href="place_order.html">去结算</a></button>
+	        </div>
+	        <div class="th total">
+	          <p>应付：<span class="pieces-total">0</span></p>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+	
+	<script type="text/javascript">
+	  layui.config({
+	    base: '../res/static/js/util/' //你存放新模块的目录，注意，不是layui的模块目录
+	  }).use(['mm','jquery','element','car'],function(){
+	    var mm = layui.mm,$ = layui.$,element = layui.element,car = layui.car;   
+	    car.init()
+	});
+	</script>	
+	<div class="footer">
+		<div class="foot_link">
+			<a href="#">关于我们</a>
+			<span>|</span>
+			<a href="#">联系我们</a>
+			<span>|</span>
+			<a href="#">招聘人才</a>
+			<span>|</span>
+			<a href="#">友情链接</a>		
+		</div>
+		<p>CopyRight © 2016 北京天天生鲜信息技术有限公司 All Rights Reserved</p>
+		<p>电话：010-****888    京ICP备*******8号</p>
+	</div>
+	
+</body>
+</html>

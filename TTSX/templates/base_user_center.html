@@ -1,0 +1,35 @@
+{# 用户中心3页面 #}
+{% extends 'base_no_cart.html' %}
+{% block title %}天天生鲜-用户中心{% endblock title %}
+{% block page_title %}用户中心{% endblock page_title %}
+{% block body %}
+<div class="main_con clearfix">
+    <div class="left_menu_con clearfix">
+        <h3>用户中心</h3>
+        <ul>
+            <div class="btn-group " style="color: F3F3F3;  margin-left: 60px;">
+            <button type="button" class="btn btn-default dropdown-toggle " data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false" style="color: F3F3F3;">
+                个人信息<span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                 <li><a href="{% url 'user:user_info'  %}">个人信息</a></li>
+                <li><a href="{% url 'user:user_add'  %}">修改信息</a></li>
+                <li><a href="{%  url 'user:user_pass'    %}">修改密码</a></li>
+                <li><a href="{%  url 'user:addr_update' %}">地址管理</a></li>
+            </ul>
+        </div>
+           <li><a href="{% url 'user:user_order' 1 %}" {% if page == 'order' %} class="active"{% endif %}>· 全部订单</a></li>
+            <li><a href="{% url 'user:user_address' %}" {% if page == 'address' %} class="active"{% endif %}>· 收货地址</a></li>
+             <li><a href="{% url 'store:add' %}" {% if page == 'user1' %} class="active"{% endif %}>· 我要开店</a></li>
+                  {% if user.store_set %}
+                 <li><a href="{% url 'store:store_list' %}" {% if page == 'user2' %} class="active"{% endif %}>· 店铺列表</a></li>
+                  {% else %}
+            <li></li>
+            {% endif %}
+        </ul>
+    </div>
+    {# 用户中心右侧内容块 #}
+    {% block right_content %}{% endblock right_content %}
+</div>
+{% endblock body %}

@@ -1,0 +1,56 @@
+{% extends 'base_user_center.html' %}
+{% block right_content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-7 col-md-offset-2">
+            <form action="{% url 'store:add' %}" name="formMobile" id="formMobile" style="display:block" method="post"
+                   onsubmit="return check()"  enctype="multipart/form-data">
+                {% csrf_token %}
+                <ul class="">
+                    <li>
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">店铺名称</button>
+                            </span>
+                            <input id='name' type="text" class="form-control"
+                                 style="width: 300px;"  placeholder="请输入..." name="name"/>
+                        </div>
+
+                    </li>
+                    <li style="margin-top: 20px">
+                          <div class="input-group">
+                             <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">店铺介绍</button>
+                            </span>
+                            <input id='intro' type="text" value="" class="form-control"
+                                 style="width: 300px;"  placeholder="请输入..." name="intro"/>
+                        </div>
+                    </li>
+                    <br>
+                    <li style="margin-left:3px">
+                       <button class="btn btn-default" type="button">店铺封面</button><br>
+                        <span>   </span><br>
+                        <div class="register-list-con register_tipsBox1">
+                            <input type="file" value=""     name="cover">
+                        </div>
+                    </li>
+                    <br>
+                    <li>
+                        <input class="btn btn-default" type="submit" value="提交数据">
+                    </li>
+                </ul>
+            </form>
+        </div>
+        <script>
+             function check(){
+        var intro = $('#intro').val()
+        var name = $('#name').val()
+        if(intro == '' || name == '' ){
+            alert("店铺名不能为空！");
+            return false;
+        }
+    }
+        </script>
+    </div>
+</div>
+{% endblock right_content %}

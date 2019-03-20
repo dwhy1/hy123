@@ -1,0 +1,64 @@
+{% extends 'base_user_center.html' %}
+{% block right_content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-7 col-md-offset-2">
+            <form action="{% url 'store:update_store' store.id %}" name="formMobile" id="formMobile"
+                  style="display:block" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <ul class="">
+                    <li>
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">店铺名称</button>
+                            </span>
+                            <input id='name' type="text" value="{{store.name}}" class="form-control"
+                                 style="width: 300px;"  placeholder="Search for..." name="name"/>
+                        </div>
+                    </li>
+                    <li style="margin-top: 20px">
+                        <div class="input-group">
+                             <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">店铺介绍</button>
+                            </span>
+                            <input id='intro' type="text" value="{{store.intro}}" class="form-control"
+                                 style="width: 300px;"  placeholder="Search for..." name="intro"/>
+
+                        </div>
+                    </li>
+                    <li style="margin-top: 20px">
+                         <button class="btn btn-default" type="button">店铺介绍</button>
+                        {% if store.status == 1 %}
+                        <input type="radio" name="status" value="1" checked>营业
+                        <input type="radio" name="status" value="0">歇业
+                        <input type="radio" name="status" value="2">闭店
+                        {% elif store.status == 0 %}
+                        <input type="radio" name="status" value="1">营业
+                        <input type="radio" name="status" value="0" checked>歇业
+                        <input type="radio" name="status" value="2">闭店
+                        {% elif store.status == 2 %}
+                        <input type="radio" name="status" value="1">营业
+                        <input type="radio" name="status" value="0">歇业
+                        <input type="radio" name="status" value="2" checked>闭店
+                        {% endif%}
+                    </li>
+                    <br>
+                    <li style="margin-left: 120px">
+                        <img src="/{{store.cover}}" alt="" style="  float:felt ; width: 200px;height: 200px; margin-left: -120px;"   >
+                        <div class="register-list-con register_tipsBox1" style=" margin-left: -120px;">
+                            <input type="file" name="cover">
+                        </div>
+                    </li>
+                    <br>
+                    <li>
+                        <input type="submit" id="btn" value="提交修改" class="btn btn-default"
+                               onclick="return confirm('确认修改吗？')" id='register_submit'/>
+                    </li>
+                </ul>
+            </form>
+        </div>
+
+    </div>
+</div>
+{% endblock right_content %}
+
